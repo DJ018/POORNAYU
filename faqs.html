@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQs - POORNAYU</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #f4faff;
+      color: #002244;
+    }
+
+    .logo-container {
+      text-align: center;
+      padding: 40px 0 10px 0;
+    }
+
+    .logo-container img {
+      width: 220px;
+      height: auto;
+    }
+
+    header nav {
+      background: #002244;
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section h2 {
+      text-align: center;
+      font-size: 38px;
+      color: #003366;
+      margin-bottom: 40px;
+      animation: fadeInDown 1s ease-in-out;
+    }
+
+    .faq-item {
+      background: #ffffff;
+      margin-bottom: 20px;
+      padding: 20px;
+      border-left: 5px solid #004080;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .faq-item:hover {
+      background: #eef6ff;
+    }
+
+    .faq-item h4 {
+      margin: 0;
+      font-size: 20px;
+      color: #004080;
+      position: relative;
+    }
+
+    .faq-item p {
+      margin-top: 10px;
+      display: none;
+      font-size: 16px;
+      line-height: 1.5;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .faq-item.open p {
+      display: block;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scaleY(0.95); }
+      to { opacity: 1; transform: scaleY(1); }
+    }
+
+    footer {
+      background: #002244;
+      color: white;
+      text-align: center;
+      padding: 16px;
+      margin-top: 50px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo-container">
+    <img src="logo.jpg" alt="POORNAYU Logo" />
+  </div>
+
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="philosophy.html">Philosophy</a>
+      <a href="team.html">Team</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="why.html">Why Us</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="section">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <h4>Do you offer customized investment plans?</h4>
+      <p>Yes, every client's portfolio is customized according to their financial goals and risk appetite.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Is the consultation free of cost?</h4>
+      <p>Yes, your first consultation with POORNAYU is completely free of charge.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Do you also provide insurance services?</h4>
+      <p>Yes, we provide life, health, and vehicle insurance services through trusted partners.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Can I invest in real estate through POORNAYU?</h4>
+      <p>Absolutely! We provide verified real estate investment opportunities across key locations.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>Are Post Office investments safe?</h4>
+      <p>Yes, Post Office schemes are government-backed and offer a high degree of safety and reliability.</p>
+    </div>
+
+    <div class="faq-item">
+      <h4>What is the process to begin investing with POORNAYU?</h4>
+      <p>Just contact us or book a consultation. Our team will guide you step-by-step.</p>
+    </div>
+
+  </section>
+
+  <footer>
+    &copy; 2025 POORNAYU: An Investment Hub. All rights reserved.
+  </footer>
+
+  <script>
+    // Toggle FAQ
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('open');
+      });
+    });
+  </script>
+</body>
+</html>

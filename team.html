@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meet Our Team - POORNAYU</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #f9fcff;
+      color: #002244;
+    }
+
+    .logo-container {
+      text-align: center;
+      padding: 40px 0 10px 0;
+    }
+
+    .logo-container img {
+      width: 220px;
+      height: auto;
+    }
+
+    header nav {
+      background: #002244;
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .team-section {
+      padding: 80px 20px;
+      text-align: center;
+      background: #f0f8ff;
+    }
+
+    .team-section h2 {
+      font-size: 38px;
+      margin-bottom: 40px;
+      color: #003366;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .member-card {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 30px 20px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      animation: slideUp 1s ease forwards;
+      opacity: 0;
+    }
+
+    .member-card:nth-child(1) { animation-delay: 0.2s; }
+    .member-card:nth-child(2) { animation-delay: 0.4s; }
+
+    .member-card img {
+      width: 180px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .member-card h4 {
+      margin: 10px 0 5px;
+      font-size: 20px;
+      color: #004080;
+    }
+
+    .member-card p {
+      margin: 0;
+      font-size: 16px;
+      color: #333;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    footer {
+      background: #002244;
+      color: white;
+      text-align: center;
+      padding: 16px;
+      margin-top: 50px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo-container">
+    <img src="logo.jpg" alt="POORNAYU Logo" />
+  </div>
+
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="philosophy.html">Philosophy</a>
+      <a href="team.html">Team</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="why.html">Why Us</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="team-section">
+    <h2>Meet Our Team</h2>
+    <div class="team-grid">
+      <div class="member-card">
+        <img src="bkb1.jpeg" alt="Bhagesh Kumar Bilala">
+        <h4>Bhagesh Kumar Bilala</h4>
+        <p>Founder & Financial Advisor</p>
+      </div>
+      <div class="member-card">
+        <img src="prof foto dj.png" alt="Devesh Jain">
+        <h4>Devesh Jain</h4>
+        <p>Technical Lead</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 POORNAYU: An Investment Hub. All rights reserved.
+  </footer>
+
+</body>
+</html>

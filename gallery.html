@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery - POORNAYU</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #f4faff;
+      color: #002244;
+    }
+
+    .logo-container {
+      text-align: center;
+      padding: 40px 0 10px 0;
+    }
+
+    .logo-container img {
+      width: 220px;
+      height: auto;
+    }
+
+    header nav {
+      background: #002244;
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 38px;
+      color: #004080;
+      margin-bottom: 40px;
+      animation: fadeInDown 0.8s ease-in-out;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      animation: fadeInUp 1s ease;
+    }
+
+    .gallery-grid a img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .gallery-grid a:hover img {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    footer {
+      background: #002244;
+      color: white;
+      text-align: center;
+      padding: 16px;
+      margin-top: 50px;
+      font-size: 14px;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo-container">
+    <img src="logo.jpg" alt="POORNAYU Logo">
+  </div>
+
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="philosophy.html">Philosophy</a>
+      <a href="team.html">Team</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="why.html">Why Us</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="section">
+    <h2>Gallery</h2>
+    <div class="gallery-grid">
+      <a href="gallery1.png" data-lightbox="poornayu-gallery" data-title="Financial Seminar"><img src="gallery1.png" alt="Gallery 1"></a>
+      <a href="gallery2.png" data-lightbox="poornayu-gallery" data-title="Investor Meetup"><img src="gallery2.png" alt="Gallery 2"></a>
+      <a href="gallery3.png" data-lightbox="poornayu-gallery" data-title="Client Interaction"><img src="gallery3.png" alt="Gallery 3"></a>
+      <a href="gallery4.png" data-lightbox="poornayu-gallery" data-title="Team Workshop"><img src="gallery4.png" alt="Gallery 4"></a>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 POORNAYU: An Investment Hub. All rights reserved.
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+</body>
+</html>

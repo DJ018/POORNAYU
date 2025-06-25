@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testimonials - POORNAYU</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: #f9fcff;
+      color: #002244;
+    }
+
+    .logo-container {
+      text-align: center;
+      padding: 40px 0 10px 0;
+    }
+
+    .logo-container img {
+      width: 220px;
+      height: auto;
+    }
+
+    header nav {
+      background: #002244;
+      text-align: center;
+      padding: 15px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .testimonials-section {
+      padding: 80px 20px;
+      background: #f0f8ff;
+      text-align: center;
+    }
+
+    .testimonials-section h2 {
+      font-size: 38px;
+      margin-bottom: 40px;
+      color: #003366;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .testimonial-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: 10px;
+      padding: 30px 20px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+      position: relative;
+      animation: slideUp 1s ease forwards;
+      opacity: 0;
+    }
+
+    .testimonial-card:nth-child(1) { animation-delay: 0.2s; }
+    .testimonial-card:nth-child(2) { animation-delay: 0.4s; }
+    .testimonial-card:nth-child(3) { animation-delay: 0.6s; }
+    .testimonial-card:nth-child(4) { animation-delay: 0.8s; }
+
+    .testimonial-card p {
+      font-size: 16px;
+      font-style: italic;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .testimonial-card .stars {
+      font-size: 18px;
+      color: #ffcc00;
+      margin-bottom: 10px;
+    }
+
+    .testimonial-card h4 {
+      font-size: 16px;
+      color: #004080;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    footer {
+      background: #002244;
+      color: white;
+      text-align: center;
+      padding: 16px;
+      margin-top: 50px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo-container">
+    <img src="logo.jpg" alt="POORNAYU Logo" />
+  </div>
+
+  <header>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="philosophy.html">Philosophy</a>
+      <a href="team.html">Team</a>
+      <a href="testimonials.html">Testimonials</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="why.html">Why Us</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <section class="testimonials-section">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial-wrapper">
+      <div class="testimonial-card">
+        <p>“POORNAYU gave me peace of mind with a diversified investment plan that actually works!”</p>
+        <div class="stars">★★★★★</div>
+        <h4>– R. Sharma</h4>
+      </div>
+      <div class="testimonial-card">
+        <p>“I was new to investing, but Bhagesh explained everything clearly. Now I feel confident.”</p>
+        <div class="stars">★★★★★</div>
+        <h4>– Neha Ahuja</h4>
+      </div>
+      <div class="testimonial-card">
+        <p>“Their insurance recommendations were perfect for my needs. Highly transparent and honest.”</p>
+        <div class="stars">★★★★☆</div>
+        <h4>– Priyanka Singh</h4>
+      </div>
+      <div class="testimonial-card">
+        <p>“Professional team, prompt service, and reliable advice. I recommend POORNAYU to all.”</p>
+        <div class="stars">★★★★★</div>
+        <h4>– Sunita Bansal</h4>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 POORNAYU: An Investment Hub. All rights reserved.
+  </footer>
+
+</body>
+</html>
