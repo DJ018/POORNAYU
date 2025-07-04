@@ -1,10 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>POORNAYU - Home</title>
   <style>
+   .top-bar {
+  background-color: #0c0c24;
+  color: white;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  flex-wrap: wrap;
+}
+
+.top-left a {
+  color: white;
+  margin-right: 14px;
+  font-size: 20px;
+  background: #25D366; /* WhatsApp green */
+  padding: 8px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+}
+
+.top-left a:nth-child(2) {
+  background: #E1306C; /* Instagram pink */
+}
+
+.top-left a:nth-child(3) {
+  background: #1DA1F2; /* Twitter blue */
+}
+
+.top-left a:hover {
+  transform: scale(1.15);
+}
+
+.top-right {
+  display: flex;
+  gap: 20px;
+  font-size: 15px;
+  flex-wrap: wrap;
+}
+
+.top-right i {
+  margin-right: 6px;
+  color: #0077cc;
+}
+
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -63,6 +117,27 @@
       font-size: 14px;
     }
   </style>
+  <!-- Top Contact Bar -->
+<div class="top-bar">
+  <div class="top-left">
+    <a href="https://wa.me/9414042187" target="_blank" title="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://www.instagram.com/bhageshbilala?igsh=ZXNkMzRtaGllOGRu" target="_blank" title="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://x.com/bhagesh_13?s=11" target="_blank" style="color: white;">
+  <i class="fab fa-twitter"></i>
+</a>
+
+  </div>
+  <div class="top-right">
+    <span><i class="fas fa-phone-alt"></i> 8005561306</span>
+    <span><i class="fas fa-envelope"></i> poornayuhub@gmail.com</span>
+  </div>
+</div>
+
+
   <div class="logo-container">
     <img src="logo.jpg" alt="POORNAYU Logo">
   </div>
@@ -90,7 +165,6 @@
     <a href="contact.html" class="cta-button fade-in-delay">Book Free Consultation</a>
   </div>
 </section>
-
 <style>
 .hero {
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('hero-bg.jpg') no-repeat center center/cover;
@@ -137,6 +211,7 @@
 </style>
 
 </head>
+
 
 
   
