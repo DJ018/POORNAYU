@@ -1,90 +1,91 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
-<head <!-- Font Awesome CDN -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>POORNAYU - Home</title>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+
   <style>
-   .top-bar {
-  background-color: #0c0c24;
-  color: white;
-  padding: 10px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: Arial, sans-serif;
-  flex-wrap: wrap;
-}
-
-.top-left a {
-  color: white;
-  margin-right: 14px;
-  font-size: 20px;
-  background: #25D366; /* WhatsApp green */
-  padding: 8px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
-  text-decoration: none;
-}
-
-.top-left a:nth-child(2) {
-  background: #E1306C; /* Instagram pink */
-}
-
-.top-left a:nth-child(3) {
-  background: #1DA1F2; /* Twitter blue */
-}
-
-.top-left a:hover {
-  transform: scale(1.15);
-}
-
-.top-right {
-  display: flex;
-  gap: 20px;
-  font-size: 15px;
-  flex-wrap: wrap;
-}
-
-.top-right i {
-  margin-right: 6px;
-  color: #0077cc;
-}
-
-
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f8faff;
-      color: #002244;
+      background: url('theme.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      transition: background 0.3s, color 0.3s;
     }
-    body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    color: #fff;
-    background: url('theme.png') no-repeat center center fixed;
-    background-size: cover;
-  }
+
+    .dark-mode {
+      background: #111 !important;
+      color: #eee !important;
+    }
+
+    .top-bar {
+      background-color: #0c0c24;
+      color: white;
+      padding: 10px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .top-left a {
+      color: white;
+      margin-right: 14px;
+      font-size: 20px;
+      padding: 8px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+    }
+
+    .top-left a:nth-child(1) { background: #25D366; }
+    .top-left a:nth-child(2) { background: #E1306C; }
+    .top-left a:nth-child(3) { background: #1DA1F2; }
+
+    .top-left a:hover {
+      transform: scale(1.15);
+    }
+
+    .top-right {
+      display: flex;
+      gap: 20px;
+      font-size: 15px;
+      flex-wrap: wrap;
+    }
+
+    .top-right i {
+      margin-right: 6px;
+      color: #00aaff;
+    }
+
     .logo-container {
       text-align: center;
       padding: 40px 0 10px 0;
     }
+
     .logo-container img {
       width: 240px;
       height: auto;
     }
+
     header nav {
       background: #002244;
       text-align: center;
       padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
+
     nav a {
       color: white;
       text-decoration: none;
@@ -92,59 +93,94 @@
       font-weight: bold;
       font-size: 16px;
     }
-    .section {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
+
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('hero-bg.jpg') no-repeat center center/cover;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      padding: 0 20px;
     }
-    .section h1 {
-      font-size: 36px;
-      color: #004080;
+
+    .hero-content h1 {
+      font-size: 48px;
       margin-bottom: 20px;
+      animation: fadeInUp 1s ease-out forwards;
     }
-    .section p {
-      font-size: 18px;
-      color: #333;
-      line-height: 1.8;
+
+    .hero-content p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      animation: fadeInUp 1.5s ease-out forwards;
     }
+
+    .cta-button {
+      padding: 12px 30px;
+      background: #00aaff;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background: #0077cc;
+    }
+
     footer {
       background: #002244;
       color: white;
       text-align: center;
       padding: 16px;
-      margin-top: 50px;
+      font-size: 14px;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    
+
+   oat:hover {
+      transform: scale(1.1);
+    }
+
+    .dark-toggle {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background: #444;
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
       font-size: 14px;
     }
   </style>
-  <!-- Top Contact Bar -->
-<div class="top-bar">
-  <div class="top-left">
-    <a href="https://wa.me/9414042187" target="_blank" title="WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-    <a href="https://www.instagram.com/bhageshbilala?igsh=ZXNkMzRtaGllOGRu" target="_blank" title="Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://x.com/bhagesh_13?s=11" target="_blank" style="color: white;">
-  <i class="fab fa-twitter"></i>
-</a>
-
+</head>
+<body>
+  <div class="top-bar">
+    <div class="top-left">
+      <a href="https://wa.me/9414042187" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/bhageshbilala?igsh=ZXNkMzRtaGllOGRu" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://x.com/bhagesh_13?s=11" target="_blank"><i class="fab fa-twitter"></i></a>
+    </div>
+    <div class="top-right">
+      <a href="tel:+918005561306" style="color:white;"><i class="fas fa-phone-alt"></i> +91 80055 61306</a>
+      <a href="mailto:poornayuhub@gmail.com" style="color:white;"><i class="fas fa-envelope"></i> poornayuhub@gmail.com</a>
+    </div>
   </div>
-  <div class="top-right">
-   <!-- Phone number -->
-<a href="tel:+918005561306" style="color: white; margin-right: 15px;">
-  <i class="fas fa-phone-alt"></i> +91 80055 61306
-</a>
-
-<!-- Email ID -->
-<a href="mailto:poornayuhub@gmail.com" style="color: white;">
-  <i class="fas fa-envelope"></i> poornayuhub@gmail.com
-</a>
-
-  </div>
-</div>
-
 
   <div class="logo-container">
     <img src="logo.jpg" alt="POORNAYU Logo">
@@ -164,69 +200,30 @@
     </nav>
   </header>
 
-
-
-  <section class="hero">
-  <div class="hero-content">
-    <h1 class="fade-in">Empowering Smart Investments with Trust</h1>
-    <p class="fade-in-delay">Join 5000+ clients who trust POORNAYU to grow and protect their wealth.</p>
-    <a href="contact.html" class="cta-button fade-in-delay">Book Free Consultation</a>
-  </div>
-</section>
-<style>
-.hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('hero-bg.jpg') no-repeat center center/cover;
-  height: 100vh;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 20px;
-}
-
-.hero-content h1 {
-  font-size: 48px;
-  margin-bottom: 20px;
-  animation: fadeInUp 1s ease-out forwards;
-}
-
-.hero-content p {
-  font-size: 20px;
-  margin-bottom: 30px;
-  animation: fadeInUp 1.5s ease-out forwards;
-}
-
-.cta-button {
-  padding: 12px 30px;
-  background: #00aaff;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 8px;
-  transition: background 0.3s ease;
-}
-
-.cta-button:hover {
-  background: #0077cc;
-}
-
-/* Animation */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-</style>
-
-</head>
-
-
-
-  
-
-
+  <section class="hero" data-aos="fade-up">
+    <div class="hero-content">
+      <h1>Empowering Smart Investments with Trust</h1>
+      <p>Join 5000+ clients who trust POORNAYU to grow and protect their wealth.</p>
+      <a href="contact.html" class="cta-button">Book Free Consultation</a>
+    </div>
+  </section>
 
   <footer>
     &copy; 2025 POORNAYU: An Investment Hub. All rights reserved.
   </footer>
+
+ 
+
+  <!-- Dark Mode Toggle Button -->
+  <button class="dark-toggle" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init();
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
 </html>
