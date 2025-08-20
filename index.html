@@ -172,6 +172,41 @@
 </head>
 
 <body>
+  <!-- Animated Intro Video Overlay -->
+<div id="intro-video-overlay" style="
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  background: linear-gradient(135deg,#0a2a4e,#1a4b8c);
+  z-index: 9999; display: flex; justify-content: center; align-items: center;
+  transition: opacity 1s ease;
+  opacity: 1;
+">
+  <video id="poornayu-intro-video" autoplay muted playsinline style="
+    width: 100vw; height: 100vh; object-fit: cover; background: transparent;
+  ">
+    <source src="poornayu-pro.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var video = document.getElementById('poornayu-intro-video');
+  var overlay = document.getElementById('intro-video-overlay');
+  if (video && overlay) {
+    video.onended = function() {
+      overlay.style.opacity = '0';
+      setTimeout(() => { overlay.style.display = 'none'; }, 1000);
+    };
+    // Optional skip on click
+    overlay.onclick = function() {
+      video.pause();
+      overlay.style.opacity = '0';
+      setTimeout(() => { overlay.style.display = 'none'; }, 1000);
+    };
+  }
+});
+</script>
+
   <!-- Top Contact Bar -->
   <div class="top-bar">
     <div class="top-left">
@@ -225,3 +260,4 @@
   </script>
 </body>
 </html>
+
