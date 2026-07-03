@@ -1,175 +1,572 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FAQs - POORNAYU</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Frequently asked questions about POORNAYU investment services, insurance, and financial planning in Jaipur.">
+  <title>FAQs – POORNAYU Investment Hub</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: #f4faff;
-      color: #002244;
-    }
-
-    .logo-container {
+    .faq-hero {
+      min-height: 52vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 40px 0 10px 0;
-    }
-
-    .logo-container img {
-      width: 220px;
-      height: auto;
-    }
-
-    header nav {
-      background: #002244;
-      text-align: center;
-      padding: 15px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-      font-size: 16px;
-    }
-
-    .section {
-      padding: 80px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .section h2 {
-      text-align: center;
-      font-size: 38px;
-      color: #003366;
-      margin-bottom: 40px;
-      animation: fadeInDown 1s ease-in-out;
-    }
-
-    .faq-item {
-      background: #ffffff;
-      margin-bottom: 20px;
-      padding: 20px;
-      border-left: 5px solid #004080;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .faq-item:hover {
-      background: #eef6ff;
-    }
-
-    .faq-item h4 {
-      margin: 0;
-      font-size: 20px;
-      color: #004080;
       position: relative;
+      background: linear-gradient(135deg, #020a18, #041530);
+      overflow: hidden;
+      padding: 120px 0 80px
     }
 
-    .faq-item p {
-      margin-top: 10px;
-      display: none;
+    .faq-hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: .12;
+      pointer-events: none
+    }
+
+    .faq-hero-orb-1 {
+      width: 480px;
+      height: 480px;
+      background: var(--gold);
+      top: -140px;
+      right: -80px;
+      animation: orbF 11s ease-in-out infinite
+    }
+
+    .faq-hero-orb-2 {
+      width: 360px;
+      height: 360px;
+      background: #1a4a8f;
+      bottom: -80px;
+      left: -60px;
+      animation: orbF 15s ease-in-out infinite reverse
+    }
+
+    @keyframes orbF {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-24px)
+      }
+    }
+
+    /* CAT TABS */
+    .faq-cats {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 48px
+    }
+
+    .faq-cat {
+      background: transparent;
+      border: 1px solid rgba(201, 162, 39, .3);
+      color: var(--text-muted);
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: 'Inter', sans-serif
+    }
+
+    .faq-cat.active,
+    .faq-cat:hover {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold);
+      box-shadow: 0 4px 16px rgba(201, 162, 39, .3)
+    }
+
+    /* FAQ ACCORDION */
+    .faq-list-adv {
+      max-width: 820px;
+      margin: 0 auto
+    }
+
+    .faq-item-adv {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(201, 162, 39, .15);
+      border-radius: 16px;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: border-color .3s
+    }
+
+    .faq-item-adv.open {
+      border-color: rgba(201, 162, 39, .45)
+    }
+
+    .faq-q-adv {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 22px 24px;
+      cursor: pointer
+    }
+
+    .faq-q-num {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      background: rgba(201, 162, 39, .1);
+      border: 1px solid rgba(201, 162, 39, .25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
       font-size: 16px;
-      line-height: 1.5;
-      animation: fadeIn 0.5s ease-in-out;
+      font-weight: 700;
+      color: var(--gold);
+      transition: var(--transition)
     }
 
-    .faq-item.open p {
-      display: block;
+    .faq-item-adv.open .faq-q-num {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold)
     }
 
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
+    .faq-q-text {
+      flex: 1;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.4;
+      font-family: 'Inter', sans-serif
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scaleY(0.95); }
-      to { opacity: 1; transform: scaleY(1); }
+    .faq-q-icon {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: rgba(201, 162, 39, .08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 13px;
+      transition: var(--transition)
     }
 
-    footer {
-      background: #002244;
-      color: white;
-      text-align: center;
-      padding: 16px;
-      margin-top: 50px;
+    .faq-item-adv.open .faq-q-icon {
+      background: var(--gold);
+      color: var(--navy);
+      transform: rotate(45deg)
+    }
+
+    .faq-a-adv {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .45s cubic-bezier(.4, 0, .2, 1)
+    }
+
+    .faq-item-adv.open .faq-a-adv {
+      max-height: 300px
+    }
+
+    .faq-a-inner {
+      padding: 4px 24px 24px 76px;
       font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.8
+    }
+
+    .faq-item-adv.hidden {
+      display: none
+    }
+
+    /* SEARCH */
+    .faq-search-wrap {
+      max-width: 560px;
+      margin: 0 auto 40px;
+      position: relative
+    }
+
+    .faq-search {
+      width: 100%;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(201, 162, 39, .25);
+      border-radius: 50px;
+      padding: 14px 52px 14px 24px;
+      color: var(--white);
+      font-size: 15px;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      transition: border-color .3s
+    }
+
+    .faq-search:focus {
+      border-color: var(--gold)
+    }
+
+    .faq-search::placeholder {
+      color: rgba(255, 255, 255, .3)
+    }
+
+    .faq-search-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold);
+      font-size: 16px;
+      pointer-events: none
+    }
+
+    .cta-glass {
+      background: rgba(201, 162, 39, .06);
+      border: 1px solid rgba(201, 162, 39, .2);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      margin-top: 60px
+    }
+
+    .cta-glass h3 {
+      font-size: 26px;
+      margin-bottom: 10px;
+      color: var(--white)
+    }
+
+    .cta-glass p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 24px
+    }
+
+    .cta-glass-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap
     }
   </style>
 </head>
+
 <body>
-
-  <div class="logo-container">
-    <img src="logo.jpg" alt="POORNAYU Logo" />
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-social"><a href="https://wa.me/919414042187" target="_blank" class="wa"><i
+            class="fab fa-whatsapp"></i></a><a href="https://www.instagram.com/bhageshbilala" target="_blank"
+          class="ig"><i class="fab fa-instagram"></i></a><a href="https://x.com/bhagesh_13" target="_blank"
+          class="tw"><i class="fab fa-x-twitter"></i></a></div>
+      <div class="top-contact"><a href="tel:+918005561306"><i class="fas fa-phone-alt"></i>+91 80055 61306</a><a
+          href="mailto:poornayuhub@gmail.com"><i class="fas fa-envelope"></i>poornayuhub@gmail.com</a></div>
+    </div>
   </div>
-
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="philosophy.html">Philosophy</a>
-      <a href="team.html">Team</a>
-      <a href="testimonials.html">Testimonials</a>
-      <a href="faqs.html">FAQs</a>
-      <a href="why.html">Why Us</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-
-  <section class="section">
-    <h2>Frequently Asked Questions</h2>
-
-    <div class="faq-item">
-      <h4>Do you offer customized investment plans?</h4>
-      <p>Yes, every client's portfolio is customized according to their financial goals and risk appetite.</p>
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="logo.jpg" alt="POORNAYU"></a>
+      <div class="nav-links" id="nav-links"><a href="index.html">Home</a><a href="services.html">Services</a><a
+          href="philosophy.html">Philosophy</a><a href="news.html">News</a><a
+          href="testimonials.html">Testimonials</a><a href="faqs.html" class="active">FAQs</a><a href="why.html">Why
+          Us</a><a href="gallery.html">Gallery</a><a href="contact.html" class="nav-cta">Contact Us</a></div>
+      <div class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span></div>
     </div>
+  </nav>
 
-    <div class="faq-item">
-      <h4>Is the consultation free of cost?</h4>
-      <p>Yes, your first consultation with POORNAYU is completely free of charge.</p>
+  <!-- HERO -->
+  <section class="faq-hero">
+    <div class="faq-hero-orb faq-hero-orb-1"></div>
+    <div class="faq-hero-orb faq-hero-orb-2"></div>
+    <div
+      style="position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,39,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,39,.04) 1px,transparent 1px);background-size:60px 60px">
     </div>
-
-    <div class="faq-item">
-      <h4>Do you also provide insurance services?</h4>
-      <p>Yes, we provide life, health, and vehicle insurance services through trusted partners.</p>
+    <div class="container" style="position:relative;z-index:2">
+      <div class="section-tag" data-aos="fade-up">Got Questions?</div>
+      <h1 class="section-title" style="font-size:clamp(36px,5vw,66px)" data-aos="fade-up" data-aos-delay="100">
+        Frequently Asked <span>Questions</span></h1>
+      <div class="gold-divider" data-aos="fade-up" data-aos-delay="150"></div>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Everything you need to know about investing
+        with POORNAYU — answered clearly and honestly.</p>
     </div>
+  </section>
 
-    <div class="faq-item">
-      <h4>Can I invest in real estate through POORNAYU?</h4>
-      <p>Absolutely! We provide verified real estate investment opportunities across key locations.</p>
+  <!-- FAQ SECTION -->
+  <section class="section-pad bg-pattern">
+    <div class="container">
+      <!-- Search -->
+      <div class="faq-search-wrap" data-aos="fade-up">
+        <input class="faq-search" id="faqSearch" type="text" placeholder="Search questions..."
+          oninput="searchFaq(this.value)">
+        <i class="fas fa-search faq-search-icon"></i>
+      </div>
+
+      <!-- Category filter -->
+      <div class="faq-cats" data-aos="fade-up">
+        <button class="faq-cat active" onclick="filterFaqAdv('all',this)">All</button>
+        <button class="faq-cat" onclick="filterFaqAdv('general',this)">General</button>
+        <button class="faq-cat" onclick="filterFaqAdv('savings',this)">Post Office</button>
+        <button class="faq-cat" onclick="filterFaqAdv('insurance',this)">Insurance</button>
+        <button class="faq-cat" onclick="filterFaqAdv('realestate',this)">Real Estate</button>
+      </div>
+
+      <!-- FAQ List -->
+      <div class="faq-list-adv" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="faq-item-adv" data-fcat="general" data-ftext="what is poornayu what do you do">
+          <div class="faq-q-adv" onclick="toggleFaqAdv(this.parentElement)">
+            <div class="faq-q-num">1</div>
+            <div class="faq-q-text">What is POORNAYU and what do you do?</div>
+            <div class="faq-q-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-a-adv">
+            <div class="faq-a-inner">POORNAYU is Jaipur's premier investment consulting hub. We help individuals and
+              families grow and protect their wealth through Post Office savings schemes, insurance policies, real
+              estate advisory, and alternative investments. Our services are fully compliant, transparent, and
+              personalised to every client.</div>
+          </div>
+        </div>
+
+        <div class="faq-item-adv" data-fcat="general" data-ftext="is the initial consultation really free">
+          <div class="faq-q-adv" onclick="toggleFaqAdv(this.parentElement)">
+            <div class="faq-q-num">2</div>
+            <div class="faq-q-text">Is the initial consultation really free?</div>
+            <div class="faq-q-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-a-adv">
+            <div class="faq-a-inner">Yes, absolutely! Your first consultation is 100% free with no obligation. We
+              believe everyone deserves access to good financial guidance before committing to any investment. Call us,
+              WhatsApp, or visit our Sanganer office.</div>
+          </div>
+        </div>
+
+        <div class="faq-item-adv" data-fcat="savings" data-ftext="what post office schemes ppf nsc sukanya">
+          <div class="faq-q-adv" onclick="toggleFaqAdv(this.parentElement)">
+            <div class="faq-q-num">3</div>
+            <div class="faq-q-text">What Post Office schemes do you help with?</div>
+            <div class="faq-q-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-a-adv">
+            <div class="faq-a-inner">We assist with all major schemes: PPF (7.1% p.a.), NSC (7.7% p.a.), Sukanya
+              Samriddhi Yojana (8.0% p.a.) for girl children, Senior Citizens Savings Scheme (8.2% p.a.), Kisan Vikas
+              Patra, and Monthly Income Scheme. All are government-backed with guaranteed returns.</div>
+          </div>
+        </div>
+
+        <div class="faq-item-adv" data-fcat="savings" data-ftext="minimum investment amount to start">
+          <div class="faq-q-adv" onclick="toggleFaqAdv(this.parentElement)">
+            <div class="faq-q-num">4</div>
+            <div class="faq-q-text">What is the minimum investment amount to start?</div>
+            <div class="faq-q-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-a-adv">
+            <div class="faq-a-inner">Investment minimums vary by scheme. Post Office savings can start from as low as
+              ₹500/month. We work with every budget — our advisors will find the right plan matching your income level,
+              goals, and risk tolerance.</div>
+          </div>
+        </div>
+
+        <div class="faq-item-adv" data-fcat="insurance" data-ftext="how do you help with mediclaim health insurance">
+          <div class="faq-q-adv" onclick="toggleFaqAdv(this.parentElement)">
+            <div class="faq-q-num">5</div>
+            <div class="faq-q-text">How do you help with Mediclaim / health insurance?</div>
+            <div class="faq-q-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-a-adv">
+            <div class="faq-a-inner">We compare top plans from Star, HDFC Ergo, Care Health, Niva Bupa and others —
+              finding the best coverage at the most competitive premium. We also provide complete claim assistance
+              support, so you never have to deal with the insurer alone during a medical emergency.</div>
+          </div>
+        </div>
+
+        <div class="faq-item-adv" data-fcat="insurance"
+          data-ftext="can you help with vehicle insurance renewal car bike">
+          <div class="faq-q-adv" onclick="toggleFaqAdv(this.parentElement)">
+            <div class="faq-q-num">6</div>
+            <div class="faq-q-text">Can you help with vehicle insurance renewal?</div>
+            <div class="faq-q-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-a-adv">
+            <div class="faq-a-inner">Yes! We handle car and two-wheeler insurance renewals, new policies, claim
+              assistance, and remind you before renewal deadlines so you never lose your No Claim Bonus (NCB) benefits.
+              Zero Depreciation and Bumper-to-Bumper options are also available.</div>
+          </div>
+        </div>
+
+        <div class="faq-item-adv" data-fcat="realestate"
+          data-ftext="do you help with real estate investments outside jaipur">
+          <div class="faq-q-adv" onclick="toggleFaqAdv(this.parentElement)">
+            <div class="faq-q-num">7</div>
+            <div class="faq-q-text">Do you help with real estate investments outside Jaipur?</div>
+            <div class="faq-q-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-a-adv">
+            <div class="faq-a-inner">Our primary expertise is Jaipur and Rajasthan. We also have trusted network
+              partners for NCR (Delhi/Noida/Gurgaon). We provide comprehensive market analysis, yield calculations, and
+              help identify properties with the best long-term appreciation potential.</div>
+          </div>
+        </div>
+
+        <div class="faq-item-adv" data-fcat="realestate"
+          data-ftext="what documents are required to start investing aadhaar pan">
+          <div class="faq-q-adv" onclick="toggleFaqAdv(this.parentElement)">
+            <div class="faq-q-num">8</div>
+            <div class="faq-q-text">What documents are required to start investing?</div>
+            <div class="faq-q-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-a-adv">
+            <div class="faq-a-inner">Generally you'll need: Aadhaar card, PAN card, bank passbook/cancelled cheque,
+              passport-size photographs, and income proof for certain schemes. Our team guides you through the exact
+              documentation for whichever service you choose — no confusion, no hassle.</div>
+          </div>
+        </div>
+
+        <div class="faq-item-adv" data-fcat="general" data-ftext="are services available online whatsapp video call">
+          <div class="faq-q-adv" onclick="toggleFaqAdv(this.parentElement)">
+            <div class="faq-q-num">9</div>
+            <div class="faq-q-text">Are POORNAYU's services available online?</div>
+            <div class="faq-q-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-a-adv">
+            <div class="faq-a-inner">Yes! While we have a physical office in Sanganer, Jaipur, we also offer WhatsApp
+              consultations, video calls, and can process many services remotely. Contact us via WhatsApp at +91 94140
+              42187 to begin your journey from anywhere.</div>
+          </div>
+        </div>
+
+        <div class="faq-item-adv" data-fcat="general"
+          data-ftext="how does poornayu earn from its services commission fees transparent">
+          <div class="faq-q-adv" onclick="toggleFaqAdv(this.parentElement)">
+            <div class="faq-q-num">10</div>
+            <div class="faq-q-text">How does POORNAYU earn from its services?</div>
+            <div class="faq-q-icon"><i class="fas fa-plus"></i></div>
+          </div>
+          <div class="faq-a-adv">
+            <div class="faq-a-inner">We follow a fully transparent model. For insurance products, we earn standard
+              industry commissions from insurers — no extra charge to you. For investment advisory, consultation fees
+              are clearly disclosed upfront. We never recommend products based on commission; only on what's best for
+              your goals.</div>
+          </div>
+        </div>
+
+      </div><!-- /faq-list-adv -->
+
+      <!-- CTA Glass -->
+      <div class="cta-glass" data-aos="fade-up">
+        <h3>Still Have Questions?</h3>
+        <p>Our advisors are available 6 days a week to answer any query — no question is too small.</p>
+        <div class="cta-glass-btns">
+          <a href="contact.html" class="btn btn-gold"><i class="fas fa-envelope"></i>Contact Us</a>
+          <a href="https://wa.me/919414042187" class="btn btn-outline" target="_blank"><i
+              class="fab fa-whatsapp"></i>WhatsApp Us</a>
+          <a href="tel:+918005561306" class="btn btn-outline"><i class="fas fa-phone-alt"></i>Call Now</a>
+        </div>
+      </div>
     </div>
-
-    <div class="faq-item">
-      <h4>Are Post Office investments safe?</h4>
-      <p>Yes, Post Office schemes are government-backed and offer a high degree of safety and reliability.</p>
-    </div>
-
-    <div class="faq-item">
-      <h4>What is the process to begin investing with POORNAYU?</h4>
-      <p>Just contact us or book a consultation. Our team will guide you step-by-step.</p>
-    </div>
-
   </section>
 
   <footer>
-    &copy; 2025 POORNAYU: An Investment Hub. All rights reserved.
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><img src="logo.jpg" alt="POORNAYU Logo">
+          <p>Jaipur's most trusted investment consulting hub. Empowering financial growth through expert guidance since
+            2010.</p>
+          <div class="footer-social"><a href="https://wa.me/919414042187" target="_blank"><i
+                class="fab fa-whatsapp"></i></a><a href="https://www.instagram.com/bhageshbilala" target="_blank"><i
+                class="fab fa-instagram"></i></a><a href="https://x.com/bhagesh_13" target="_blank"><i
+                class="fab fa-x-twitter"></i></a></div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4><a href="index.html">Home</a><a href="services.html">Services</a><a
+            href="philosophy.html">Philosophy</a><a href="news.html">News</a><a href="gallery.html">Gallery</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4><a href="services.html">Post Office Schemes</a><a href="services.html">Mediclaim
+            Policies</a><a href="services.html">Life Insurance</a><a href="services.html">Real Estate</a><a
+            href="services.html">Alternative Investments</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4><a href="tel:8005561306"><i class="fas fa-phone-alt"
+              style="margin-right:8px;color:var(--gold)"></i>80055 61306</a><a href="https://wa.me/919414042187"><i
+              class="fab fa-whatsapp" style="margin-right:8px;color:var(--gold)"></i>9414042187</a><a
+            href="mailto:poornayuhub@gmail.com"><i class="fas fa-envelope"
+              style="margin-right:8px;color:var(--gold)"></i>poornayuhub@gmail.com</a><a href="#"><i
+              class="fas fa-map-marker-alt" style="margin-right:8px;color:var(--gold)"></i>Sanganer, Jaipur, RJ</a>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2025 <span>POORNAYU: An Investment Hub</span>. All rights reserved.</div>
+    </div>
   </footer>
+  <a href="https://wa.me/919414042187" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900, once: true, offset: 80 });
+    window.addEventListener('scroll', function () { document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60); });
+
+    function toggleFaqAdv(item) {
+      var was = item.classList.contains('open');
+      document.querySelectorAll('.faq-item-adv.open').forEach(function (i) { i.classList.remove('open'); });
+      if (!was) item.classList.add('open');
+    }
+
+    function filterFaqAdv(cat, btn) {
+      document.querySelectorAll('.faq-cat').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+      document.querySelectorAll('.faq-item-adv').forEach(function (item) {
+        item.classList.toggle('hidden', cat !== 'all' && item.dataset.fcat !== cat);
+      });
+    }
+
+    function searchFaq(q) {
+      var s = q.toLowerCase().trim();
+      document.querySelectorAll('.faq-item-adv').forEach(function (item) {
+        item.classList.toggle('hidden', s !== '' && !item.dataset.ftext.includes(s) && !item.querySelector('.faq-q-text').textContent.toLowerCase().includes(s));
+      });
+    }
+  </script>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="mobile-sticky-cta">
+    <a href="tel:+918005561306" class="cta-call"><i class="fas fa-phone-alt"></i>Call Now</a>
+    <a href="https://wa.me/919414042187" class="cta-wa" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+  </div>
 
   <script>
-    // Toggle FAQ
-    document.querySelectorAll('.faq-item').forEach(item => {
-      item.addEventListener('click', () => {
-        item.classList.toggle('open');
+    // Back to top
+    var btt = document.getElementById('backToTop');
+    if(btt){
+      window.addEventListener('scroll', function(){
+        btt.classList.toggle('visible', window.scrollY > 300);
       });
-    });
+      btt.addEventListener('click', function(){
+        window.scrollTo({top:0, behavior:'smooth'});
+      });
+    }
+    // Hamburger X toggle
+    var ham = document.querySelector('.nav-hamburger');
+    var navLinks = document.getElementById('nav-links');
+    if(ham && navLinks){
+      ham.addEventListener('click', function(){
+        ham.classList.toggle('open');
+      });
+    }
   </script>
 </body>
+
 </html>
