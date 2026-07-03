@@ -1,264 +1,1760 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta name="google-site-verification" content="mVzs9mGXUQ3W0P7TpCHGb-HVecCAzvSRVApT_MqJGUk" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>POORNAYU - Home</title>
-  
-  <!-- Font Awesome CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <!-- Scroll Animation CDN -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
+  <meta name="description"
+    content="POORNAYU – An Investment Hub offering Post Office Schemes, Mediclaim, Insurance, Real Estate & Alternative Investments in Jaipur, Rajasthan.">
+  <title>POORNAYU – An Investment Hub | Trusted Financial Advisory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      color: #fff;
-      background: url('theme.png') no-repeat center center fixed;
-      background-size: cover;
-    }
-
-    /* --- Top Bar --- */
-    .top-bar {
-      background-color: #0c0c24;
-      color: white;
-      padding: 10px 30px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .top-left, .top-right {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .top-left a {
-      color: white;
-      font-size: 20px;
-      padding: 8px;
-      border-radius: 50%;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      transition: transform 0.3s ease;
-    }
-
-    .top-left a:nth-child(1) { background: #25D366; }  /* WhatsApp */
-    .top-left a:nth-child(2) { background: #E1306C; }  /* Instagram */
-    .top-left a:nth-child(3) { background: #1DA1F2; }  /* Twitter */
-
-    .top-left a:hover, .top-right a:hover {
-      transform: scale(1.15);
-    }
-
-    .top-right a {
-      color: white;
-      text-decoration: none;
-      font-size: 16px;
-    }
-
-    .top-right i {
-      margin-right: 6px;
-      color: #00acee;
-    }
-
-    @media (max-width: 768px) {
-      .top-bar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .top-left, .top-right {
-        width: 100%;
-        justify-content: center;
-        padding: 5px 0;
-      }
-    }
-
-    /* --- Logo --- */
-    .logo-container {
-      text-align: center;
-      padding: 40px 0 10px 0;
-    }
-
-    .logo-container img {
-      width: 240px;
-      height: auto;
-    }
-
-    /* --- Navigation --- */
-    header nav {
-      background: #002244;
-      text-align: center;
-      padding: 15px 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-      font-size: 16px;
-      transition: color 0.3s ease;
-    }
-
-    nav a:hover {
-      color: #00aaff;
-    }
-
-    /* --- Hero Section --- */
-    .hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
-      height: 80vh;
-      color: white;
+    /* ── INTRO OVERLAY ── */
+    #intro-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: #000;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 0 20px;
+      transition: opacity .8s ease
     }
 
-    .hero-content h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
-      animation: fadeInUp 1s ease-out forwards;
+    #intro-overlay.fade-out {
+      opacity: 0;
+      pointer-events: none
     }
 
-    .hero-content p {
-      font-size: 20px;
-      margin-bottom: 30px;
-      animation: fadeInUp 1.5s ease-out forwards;
+    #intro-video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover
     }
 
-    .cta-button {
-      padding: 12px 30px;
-      background: #00aaff;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 8px;
-      transition: background 0.3s ease;
-    }
-
-    .cta-button:hover {
-      background: #0077cc;
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* --- Footer --- */
-    footer {
-      background: #002244;
-      color: white;
-      text-align: center;
-      padding: 16px;
+    .intro-skip {
+      position: absolute;
+      bottom: 36px;
+      right: 36px;
+      background: rgba(201, 162, 39, .15);
+      border: 1px solid rgba(201, 162, 39, .5);
+      color: #c9a227;
+      padding: 10px 24px;
+      border-radius: 50px;
+      font-family: 'Inter', sans-serif;
       font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all .3s;
+      backdrop-filter: blur(8px)
+    }
+
+    .intro-skip:hover {
+      background: rgba(201, 162, 39, .3)
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(2, 10, 24, .95) 0%, rgba(4, 21, 48, .82) 50%, rgba(2, 10, 24, .95) 100%), url('theme.png') center/cover no-repeat
+    }
+
+    canvas#particleCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1
+    }
+
+    .hero-content-wrap {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+      padding: 120px 0 80px
+    }
+
+    .hero-text {
+      flex: 1;
+      max-width: 640px
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201, 162, 39, .1);
+      border: 1px solid rgba(201, 162, 39, .35);
+      border-radius: 50px;
+      padding: 9px 20px;
+      margin-bottom: 32px;
+      animation: fadeInUp .6s ease forwards
+    }
+
+    .hero-badge span {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase
+    }
+
+    .hero-badge i {
+      color: var(--gold);
+      font-size: 11px
+    }
+
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      opacity: .8;
+      animation: fadeInUp .7s ease .05s both
+    }
+
+    .hero-title {
+      font-size: clamp(42px, 5.8vw, 78px);
+      line-height: 1.08;
+      margin-bottom: 28px;
+      animation: fadeInUp .8s ease .1s both
+    }
+
+    .hero-title .line1 {
+      display: block;
+      color: var(--white)
+    }
+
+    .hero-title .line2 {
+      display: block;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold));
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite, fadeInUp .8s ease .2s both
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      color: rgba(255, 255, 255, .72);
+      line-height: 1.8;
+      margin-bottom: 44px;
+      animation: fadeInUp .8s ease .3s both;
+      font-weight: 300
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeInUp .8s ease .4s both
+    }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 36px;
+      animation: fadeInUp .8s ease .5s both
+    }
+
+    .hero-trust-avatars {
+      display: flex
+    }
+
+    .hero-trust-avatars span {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      border: 2px solid var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-left: -10px;
+      font-family: 'Playfair Display', serif
+    }
+
+    .hero-trust-avatars span:first-child {
+      margin-left: 0
+    }
+
+    .hero-trust-text {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .65);
+      line-height: 1.5
+    }
+
+    .hero-trust-text strong {
+      color: var(--gold);
+      font-weight: 700
+    }
+
+    /* hero right panel */
+    .hero-visual {
+      flex: 0 0 390px;
+      animation: fadeInRight 1s ease .5s both
+    }
+
+    .hv-main-card {
+      background: rgba(255, 255, 255, .05);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(201, 162, 39, .22);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .hv-main-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201, 162, 39, .06), transparent)
+    }
+
+    .hv-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 8px
+    }
+
+    .hv-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 60px;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1
+    }
+
+    .hv-sub {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .55);
+      margin-top: 6px
+    }
+
+    .hv-mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px
+    }
+
+    .hv-mini {
+      background: rgba(255, 255, 255, .05);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(201, 162, 39, .18);
+      border-radius: 14px;
+      padding: 20px 18px;
+      text-align: center;
+      transition: var(--transition)
+    }
+
+    .hv-mini:hover {
+      border-color: rgba(201, 162, 39, .5);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(201, 162, 39, .15)
+    }
+
+    .hv-mini .mn {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1
+    }
+
+    .hv-mini .ml {
+      font-size: 12px;
+      color: rgba(255, 255, 255, .55);
+      margin-top: 4px
+    }
+
+    /* ── MARQUEE TICKER ── */
+    .ticker-wrap {
+      background: linear-gradient(90deg, rgba(201, 162, 39, .1), rgba(201, 162, 39, .06));
+      border-top: 1px solid rgba(201, 162, 39, .18);
+      border-bottom: 1px solid rgba(201, 162, 39, .18);
+      padding: 12px 0;
+      overflow: hidden;
+      position: relative
+    }
+
+    .ticker-wrap::before,
+    .ticker-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 120px;
+      z-index: 2
+    }
+
+    .ticker-wrap::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--navy), transparent)
+    }
+
+    .ticker-wrap::after {
+      right: 0;
+      background: linear-gradient(-90deg, var(--navy), transparent)
+    }
+
+    .ticker-track {
+      display: flex;
+      white-space: nowrap;
+      animation: ticker 35s linear infinite
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 48px;
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500
+    }
+
+    .ticker-item i {
+      color: var(--gold);
+      font-size: 11px
+    }
+
+    .ticker-item strong {
+      color: var(--gold);
+      font-weight: 700
+    }
+
+    @keyframes ticker {
+      0% {
+        transform: translateX(0)
+      }
+
+      100% {
+        transform: translateX(-50%)
+      }
+    }
+
+    /* ── STATS STRIP ── */
+    .stats-strip {
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+      padding: 20px 0
+    }
+
+    .stats-row {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px
+    }
+
+    .stat-item {
+      text-align: center
+    }
+
+    .stat-item .val {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 900;
+      color: var(--navy)
+    }
+
+    .stat-item .lbl {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--navy);
+      opacity: .75;
+      letter-spacing: 1px;
+      text-transform: uppercase
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center
+    }
+
+    .about-img-wrap {
+      position: relative
+    }
+
+    .about-img-wrap img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, .45)
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: -28px;
+      right: -28px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--navy);
+      padding: 22px 26px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 12px 36px rgba(201, 162, 39, .45)
+    }
+
+    .about-badge .big {
+      font-size: 40px;
+      font-weight: 900;
+      font-family: 'Playfair Display', serif;
+      line-height: 1
+    }
+
+    .about-badge small {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase
+    }
+
+    .about-list {
+      margin: 24px 0
+    }
+
+    .about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6
+    }
+
+    .about-list li i {
+      color: var(--gold);
+      margin-top: 3px;
+      flex-shrink: 0
+    }
+
+    .about-img-decor {
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 80px;
+      height: 80px;
+      border: 2px solid rgba(201, 162, 39, .3);
+      border-radius: 50%;
+      animation: spin 20s linear infinite
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg)
+      }
+    }
+
+    /* ── SERVICES PREVIEW ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px
+    }
+
+    .service-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 36px 28px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transform: scaleX(0);
+      transition: transform var(--transition);
+      transform-origin: left
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(201, 162, 39, .06), transparent);
+      border-radius: 50%;
+      transform: translate(40%, 40%)
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(201, 162, 39, .45);
+      box-shadow: var(--shadow-gold)
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1)
+    }
+
+    .service-icon {
+      width: 68px;
+      height: 68px;
+      background: rgba(201, 162, 39, .1);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      color: var(--gold);
+      margin-bottom: 22px;
+      transition: var(--transition)
+    }
+
+    .service-card:hover .service-icon {
+      background: var(--gold);
+      color: var(--navy);
+      transform: rotate(8deg) scale(1.05)
+    }
+
+    .service-card h3 {
+      font-size: 22px;
+      margin-bottom: 12px;
+      color: var(--white)
+    }
+
+    .service-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75
+    }
+
+    .service-card .arrow-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-top: 16px;
+      transition: gap var(--transition)
+    }
+
+    .service-card:hover .arrow-link {
+      gap: 10px
+    }
+
+    /* ── WHY US ── */
+    .why-bg {
+      background: linear-gradient(135deg, var(--navy-2), var(--navy-3));
+      border-top: 1px solid rgba(201, 162, 39, .1);
+      border-bottom: 1px solid rgba(201, 162, 39, .1)
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 56px
+    }
+
+    .why-card {
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid rgba(201, 162, 39, .12);
+      border-radius: 20px;
+      padding: 36px 24px;
+      text-align: center;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden
+    }
+
+    .why-card:hover {
+      border-color: rgba(201, 162, 39, .4);
+      box-shadow: var(--shadow-gold);
+      transform: translateY(-6px)
+    }
+
+    .why-icon-wrap {
+      width: 72px;
+      height: 72px;
+      background: rgba(201, 162, 39, .08);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      transition: var(--transition)
+    }
+
+    .why-card:hover .why-icon-wrap {
+      background: var(--gold)
+    }
+
+    .why-icon {
+      font-size: 30px;
+      color: var(--gold);
+      transition: var(--transition)
+    }
+
+    .why-card:hover .why-icon {
+      color: var(--navy)
+    }
+
+    .why-card h3 {
+      font-size: 19px;
+      margin-bottom: 10px;
+      color: var(--white)
+    }
+
+    .why-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65
+    }
+
+    /* ── TESTIMONIALS SLIDER ── */
+    .testi-slider-wrap {
+      position: relative;
+      overflow: hidden;
+      margin-top: 54px
+    }
+
+    .testi-track {
+      display: flex;
+      transition: transform .6s cubic-bezier(.4, 0, .2, 1)
+    }
+
+    .testi-slide {
+      min-width: calc(33.333% - 16px);
+      margin-right: 24px;
+      flex-shrink: 0
+    }
+
+    .testi-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 36px;
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition)
+    }
+
+    .testi-card::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 80px;
+      color: rgba(201, 162, 39, .12);
+      position: absolute;
+      top: 16px;
+      left: 20px;
+      line-height: 1
+    }
+
+    .testi-card:hover {
+      border-color: rgba(201, 162, 39, .4);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-gold)
+    }
+
+    .testi-stars {
+      color: var(--gold);
+      font-size: 15px;
+      margin-bottom: 16px;
+      display: flex;
+      gap: 3px
+    }
+
+    .testi-text {
+      font-size: 15px;
+      color: rgba(255, 255, 255, .8);
+      line-height: 1.8;
+      font-style: italic;
+      margin-bottom: 24px
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 14px
+    }
+
+    .testi-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy);
+      flex-shrink: 0
+    }
+
+    .testi-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--white)
+    }
+
+    .testi-role {
+      font-size: 12px;
+      color: var(--gold);
+      margin-top: 2px
+    }
+
+    .testi-controls {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 36px;
+      align-items: center
+    }
+
+    .testi-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 162, 39, .35);
+      background: transparent;
+      color: var(--gold);
+      font-size: 15px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .testi-btn:hover {
+      background: var(--gold);
+      color: var(--navy)
+    }
+
+    .testi-dots {
+      display: flex;
+      gap: 8px
+    }
+
+    .testi-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(201, 162, 39, .3);
+      cursor: pointer;
+      transition: var(--transition)
+    }
+
+    .testi-dot.active {
+      background: var(--gold);
+      width: 24px;
+      border-radius: 4px
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%);
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='20' cy='20' r='40' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3Ccircle cx='80' cy='80' r='60' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/svg%3E") no-repeat center;
+      background-size: cover
+    }
+
+    .cta-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: .18
+    }
+
+    .cta-orb-1 {
+      width: 400px;
+      height: 400px;
+      background: var(--gold-dark);
+      top: -100px;
+      left: -100px
+    }
+
+    .cta-orb-2 {
+      width: 300px;
+      height: 300px;
+      background: #fff;
+      bottom: -80px;
+      right: -80px
+    }
+
+    .cta-banner h2 {
+      font-size: clamp(30px, 4.5vw, 52px);
+      color: var(--navy);
+      margin-bottom: 18px;
+      position: relative;
+      font-weight: 900
+    }
+
+    .cta-banner p {
+      color: rgba(2, 10, 24, .72);
+      font-size: 18px;
+      margin-bottom: 40px;
+      position: relative;
+      font-weight: 400
+    }
+
+    .btn-dark {
+      background: var(--navy);
+      color: var(--gold)
+    }
+
+    .btn-dark:hover {
+      background: var(--navy-2);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, .35)
+    }
+
+    /* ── NEWSLETTER ── */
+    .newsletter-wrap {
+      background: rgba(201, 162, 39, .06);
+      border: 1px solid rgba(201, 162, 39, .18);
+      border-radius: 24px;
+      padding: 56px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap
+    }
+
+    .newsletter-left h3 {
+      font-size: clamp(22px, 3vw, 34px);
+      margin-bottom: 10px
+    }
+
+    .newsletter-left p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      flex: 1;
+      max-width: 460px
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(201, 162, 39, .3);
+      border-radius: 50px;
+      padding: 14px 22px;
+      color: var(--white);
+      font-size: 14px;
+      outline: none;
+      transition: var(--transition);
+      min-width: 200px
+    }
+
+    .newsletter-form input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201, 162, 39, .1)
+    }
+
+    .newsletter-form input::placeholder {
+      color: rgba(160, 174, 192, .5)
+    }
+
+    .newsletter-form .btn {
+      white-space: nowrap
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(28px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(40px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0)
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: 0 center
+      }
+
+      100% {
+        background-position: 200% center
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-10px)
+      }
+    }
+
+    /* ── FOUNDER NAMECARD ── */
+    .founder-namecard {
+      margin-top: 28px;
+      background: rgba(255, 255, 255, .06);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(201, 162, 39, .3);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, .3);
+      transition: box-shadow .35s, border-color .35s;
+    }
+
+    .founder-namecard:hover {
+      border-color: rgba(201, 162, 39, .6);
+      box-shadow: 0 12px 44px rgba(201, 162, 39, .18), 0 4px 16px rgba(0, 0, 0, .3);
+    }
+
+    .founder-namecard::before {
+      content: '';
+      display: block;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+    }
+
+    .founder-namecard-inner {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 20px 22px;
+    }
+
+    .fnc-avatar {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--navy);
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(201, 162, 39, .4);
+    }
+
+    .fnc-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .fnc-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -.2px;
+    }
+
+    .fnc-role {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    .fnc-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    .fnc-meta i {
+      color: var(--gold);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1100px) {
+      .hero-visual {
+        flex: 0 0 320px
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr
+      }
+
+      .about-img-wrap {
+        max-width: 500px;
+        margin: 0 auto 60px
+      }
+
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(max-width:768px) {
+      .hero-content-wrap {
+        flex-direction: column;
+        padding: 90px 0 50px;
+        gap: 40px;
+        text-align: center
+      }
+
+      .hero-text {
+        max-width: 100%
+      }
+
+      .hero-visual {
+        flex: none;
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto
+      }
+
+      .hero-trust {
+        justify-content: center
+      }
+
+      .hero-actions {
+        justify-content: center
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr
+      }
+
+      .testi-slide {
+        min-width: 100%;
+        margin-right: 0
+      }
+
+      .newsletter-wrap {
+        flex-direction: column;
+        padding: 36px 24px
+      }
+
+      .newsletter-form {
+        max-width: 100%;
+        width: 100%
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr
+      }
+
+      .about-img-wrap {
+        max-width: 100%;
+        margin: 0 0 48px
+      }
+
+      .about-badge {
+        bottom: -20px;
+        right: -14px;
+        padding: 16px 18px
+      }
+
+      .hv-num {
+        font-size: 44px
+      }
+    }
+
+    @media(max-width:640px) {
+      .hero-title {
+        font-size: clamp(34px, 9vw, 52px)
+      }
+
+      .hero-sub {
+        font-size: 15px
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: center
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+        justify-content: center
+      }
+
+      .hv-mini-grid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .fnc-name {
+        font-size: 16px
+      }
+
+      .fnc-role {
+        font-size: 10px;
+        letter-spacing: 1px
+      }
+
+      .section-pad {
+        padding: 64px 0
+      }
+    }
+
+    @media(max-width:480px) {
+      .why-grid {
+        grid-template-columns: 1fr
+      }
+
+      .hero-badge span {
+        font-size: 10px;
+        letter-spacing: 1.5px
+      }
+
+      .hv-main-card {
+        padding: 22px 18px
+      }
+
+      .hv-mini {
+        padding: 16px 12px
+      }
+
+      .founder-namecard-inner {
+        gap: 12px;
+        padding: 16px 16px
+      }
+
+      .fnc-avatar {
+        width: 48px;
+        height: 48px;
+        font-size: 20px
+      }
+
+      .about-badge {
+        bottom: -16px;
+        right: -10px;
+        padding: 14px 16px
+      }
+
+      .about-badge .big {
+        font-size: 28px
+      }
     }
   </style>
 </head>
 
 <body>
-  <!-- Animated Intro Video Overlay -->
-<div id="intro-video-overlay" style="
-  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-  background: linear-gradient(135deg,#0a2a4e,#1a4b8c);
-  z-index: 9999; display: flex; justify-content: center; align-items: center;
-  transition: opacity 1s ease;
-  opacity: 1;
-">
-  <video id="poornayu-intro-video" autoplay muted playsinline style="
-    width: 100vw; height: 100vh; object-fit: cover; background: transparent;
-  ">
-    <source src="poornayu.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  var video = document.getElementById('poornayu-intro-video');
-  var overlay = document.getElementById('intro-video-overlay');
-  if (video && overlay) {
-    video.onended = function() {
-      overlay.style.opacity = '0';
-      setTimeout(() => { overlay.style.display = 'none'; }, 1000);
-    };
-    // Optional skip on click
-    overlay.onclick = function() {
-      video.pause();
-      overlay.style.opacity = '0';
-      setTimeout(() => { overlay.style.display = 'none'; }, 1000);
-    };
-  }
-});
-</script>
+  <!-- INTRO VIDEO -->
+  <div id="intro-overlay">
+    <video id="intro-video" autoplay muted playsinline>
+      <source src="poornayu.mp4" type="video/mp4">
+    </video>
+    <button class="intro-skip" onclick="skipIntro()">Skip &nbsp;<i class="fas fa-forward"></i></button>
+  </div>
+  <script>
+    (function () {
+      var seen = sessionStorage.getItem('poornayu_intro_seen');
+      var overlay = document.getElementById('intro-overlay');
+      var video = document.getElementById('intro-video');
+      if (seen) { overlay.style.display = 'none'; return; }
+      sessionStorage.setItem('poornayu_intro_seen', '1');
+      video.addEventListener('ended', dismiss);
+      setTimeout(function () { if (overlay.style.display !== 'none') dismiss(); }, 30000);
+      function dismiss() { overlay.classList.add('fade-out'); setTimeout(function () { overlay.style.display = 'none'; }, 900); }
+      window.skipIntro = dismiss;
+    })();
+  </script>
 
-  <!-- Top Contact Bar -->
+  <!-- TOP BAR -->
   <div class="top-bar">
-    <div class="top-left">
-      <a href="https://wa.me/9414042187" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://www.instagram.com/bhageshbilala" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://x.com/bhagesh_13" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-    </div>
-    <div class="top-right">
-      <a href="tel:+918005561306"><i class="fas fa-phone-alt"></i> +91 80055 61306</a>
-      <a href="mailto:poornayuhub@gmail.com"><i class="fas fa-envelope"></i> poornayuhub@gmail.com</a>
+    <div class="container top-bar-inner">
+      <div class="top-social">
+        <a href="https://wa.me/919414042187" target="_blank" class="wa" title="WhatsApp"><i
+            class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/bhageshbilala" target="_blank" class="ig" title="Instagram"><i
+            class="fab fa-instagram"></i></a>
+        <a href="https://x.com/bhagesh_13" target="_blank" class="tw" title="Twitter/X"><i
+            class="fab fa-x-twitter"></i></a>
+      </div>
+      <div class="top-contact">
+        <a href="tel:+918005561306"><i class="fas fa-phone-alt"></i>+91 80055 61306</a>
+        <a href="mailto:poornayuhub@gmail.com"><i class="fas fa-envelope"></i>poornayuhub@gmail.com</a>
+      </div>
     </div>
   </div>
 
-  <!-- Logo -->
-  <div class="logo-container">
-    <img src="logo.jpg" alt="POORNAYU Logo">
-  </div>
+  <!-- NAVIGATION -->
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="logo.jpg" alt="POORNAYU Logo"></a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="services.html">Services</a>
+        <a href="philosophy.html">Philosophy</a>
+        <a href="news.html">News</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="faqs.html">FAQs</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html" class="nav-cta">Contact Us</a>
+      </div>
+      <div class="nav-hamburger" id="hamburger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
 
-  <!-- Navigation -->
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="philosophy.html">Philosophy</a>
-      <a href="team.html">Team</a>
-      <a href="testimonials.html">Testimonials</a>
-      <a href="faqs.html">FAQs</a>
-      <a href="why.html">Why Us</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-
-  <!-- Hero Section -->
+  <!-- HERO -->
   <section class="hero">
-    <div class="hero-content" data-aos="fade-up">
-      <h1>Empowering Smart Investments with Trust</h1>
-      <p>Join 10K+ clients who trust POORNAYU to grow and protect their wealth.</p>
-      <a href="contact.html" class="cta-button">Book Free Consultation</a>
+    <div class="hero-bg"></div>
+    <canvas id="particleCanvas"></canvas>
+    <div class="container">
+      <div class="hero-content-wrap">
+        <div class="hero-text">
+          <div class="hero-badge"><i class="fas fa-star"></i><span>Rajasthan's Premier Investment Hub</span></div>
+          <div class="hero-eyebrow">Trusted Since 2010</div>
+          <h1 class="hero-title">
+            <span class="line1">Empowering Smart</span>
+            <span class="line2">Investments with Trust</span>
+          </h1>
+          <p class="hero-sub">Join 5,000+ clients who trust POORNAYU to grow, protect, and secure their wealth through
+            expert financial advisory in Jaipur.</p>
+          <div class="hero-actions">
+            <a href="contact.html" class="btn btn-gold"><i class="fas fa-calendar-check"></i>Book Free Consultation</a>
+            <a href="services.html" class="btn btn-outline"><i class="fas fa-arrow-right"></i>Explore Services</a>
+          </div>
+          <div class="hero-trust">
+            <div class="hero-trust-avatars">
+              <span>R</span><span>S</span><span>A</span><span>P</span><span>M</span>
+            </div>
+            <div class="hero-trust-text"><strong>5,000+ clients</strong><br>trust POORNAYU with their financial future
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hv-main-card">
+            <div class="hv-label">Assets Under Management</div>
+            <div class="hv-num">₹100Cr<span style="font-size:32px">+</span></div>
+            <div class="hv-sub">Across 6 investment categories</div>
+            <div
+              style="height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin-top:20px;border-radius:2px">
+            </div>
+            <div style="display:flex;justify-content:space-between;margin-top:14px">
+              <span style="font-size:12px;color:var(--text-muted)"><i class="fas fa-arrow-trend-up"
+                  style="color:var(--gold)"></i> 100% Client Satisfaction</span>
+              <span style="font-size:12px;color:var(--gold);font-weight:600">↑ Growing</span>
+            </div>
+          </div>
+          <div class="hv-mini-grid">
+            <div class="hv-mini">
+              <div class="mn" id="counter1">0</div>
+              <div class="ml">Happy Clients</div>
+            </div>
+            <div class="hv-mini">
+              <div class="mn" id="counter2">0</div>
+              <div class="ml">Years of Excellence</div>
+            </div>
+            <div class="hv-mini">
+              <div class="mn">6+</div>
+              <div class="ml">Services</div>
+            </div>
+            <div class="hv-mini">
+              <div class="mn">100%</div>
+              <div class="ml">Satisfaction</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- MARQUEE TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="tickerTrack">
+      <span class="ticker-item"><i class="fas fa-circle-dot"></i> PPF Returns <strong>7.1% p.a.</strong></span>
+      <span class="ticker-item"><i class="fas fa-circle-dot"></i> SCSS Interest <strong>8.2% p.a.</strong></span>
+      <span class="ticker-item"><i class="fas fa-circle-dot"></i> NSC Returns <strong>7.7% p.a.</strong></span>
+      <span class="ticker-item"><i class="fas fa-circle-dot"></i> SSY Rate <strong>8.0% p.a.</strong></span>
+      <span class="ticker-item"><i class="fas fa-circle-dot"></i> KVP Doubles In <strong>115 Months</strong></span>
+      <span class="ticker-item"><i class="fas fa-circle-dot"></i> Real Estate Growth Jaipur <strong>12%
+          Annually</strong></span>
+      <span class="ticker-item"><i class="fas fa-circle-dot"></i> POORNAYU Clients Served <strong>5,000+</strong></span>
+      <span class="ticker-item"><i class="fas fa-circle-dot"></i> Free Consultation <strong>Book Now</strong></span>
+      <span class="ticker-item"><i class="fas fa-circle-dot"></i> PPF Returns <strong>7.1% p.a.</strong></span>
+      <span class="ticker-item"><i class="fas fa-circle-dot"></i> SCSS Interest <strong>8.2% p.a.</strong></span>
+      <span class="ticker-item"><i class="fas fa-circle-dot"></i> NSC Returns <strong>7.7% p.a.</strong></span>
+      <span class="ticker-item"><i class="fas fa-circle-dot"></i> SSY Rate <strong>8.0% p.a.</strong></span>
+      <span class="ticker-item"><i class="fas fa-circle-dot"></i> KVP Doubles In <strong>115 Months</strong></span>
+      <span class="ticker-item"><i class="fas fa-circle-dot"></i> Real Estate Growth Jaipur <strong>12%
+          Annually</strong></span>
+      <span class="ticker-item"><i class="fas fa-circle-dot"></i> POORNAYU Clients Served <strong>5,000+</strong></span>
+      <span class="ticker-item"><i class="fas fa-circle-dot"></i> Free Consultation <strong>Book Now</strong></span>
+    </div>
+  </div>
+
+  <!-- STATS STRIP -->
+  <div class="stats-strip" data-aos="fade-up">
+    <div class="container">
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="val" data-count="5000" data-suffix="+">5000+</div>
+          <div class="lbl">Happy Clients</div>
+        </div>
+        <div class="stat-item">
+          <div class="val" data-count="20" data-suffix="+">20+</div>
+          <div class="lbl">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="val" data-count="6" data-suffix="+">6+</div>
+          <div class="lbl">Services Offered</div>
+        </div>
+        <div class="stat-item">
+          <div class="val" data-count="100" data-suffix="%">100%</div>
+          <div class="lbl">Client Satisfaction</div>
+        </div>
+        <div class="stat-item">
+          <div class="val">₹100Cr+</div>
+          <div class="lbl">Assets Managed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="section-pad bg-pattern">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-img-wrap" data-aos="fade-right">
+          <div class="about-img-decor"></div>
+          <img src="Bhagesh Bilala poornayu photo.jpeg" alt="Bhagesh Bilala – Founder POORNAYU" style="border-radius:20px">
+
+          <!-- OWNER NAME & DESIGNATION CARD -->
+          <div class="founder-namecard" data-aos="fade-up" data-aos-delay="200">
+            <div class="founder-namecard-inner">
+              <div class="fnc-avatar">B</div>
+              <div class="fnc-info">
+                <div class="fnc-name">Bhagesh Bilala</div>
+                <div class="fnc-role">Founder &amp; Chief Financial Advisor</div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="about-content" data-aos="fade-left">
+          <div class="section-tag">About POORNAYU</div>
+          <h2 class="section-title">Your Trusted Financial <span>Growth Partner</span></h2>
+          <div class="gold-divider" style="margin:16px 0 22px 0"></div>
+          <p style="color:var(--text-muted);line-height:1.85;font-size:15px;margin-bottom:16px">POORNAYU is Jaipur's
+            premier investment consulting hub, dedicated to helping individuals and families achieve lasting financial
+            security. From government-backed Post Office Schemes to diversified portfolios, we craft solutions tailored
+            to your life goals.</p>
+          <p style="color:var(--text-muted);line-height:1.85;font-size:15px">Based in Sanganer, Jaipur — we have proudly
+            served 5,000+ clients with transparent, ethical, and result-driven financial guidance since our founding.
+          </p>
+          <ul class="about-list">
+            <li><i class="fas fa-check-circle"></i>SEBI-compliant investment advisory services</li>
+            <li><i class="fas fa-check-circle"></i>Personalised portfolio planning for every budget</li>
+            <li><i class="fas fa-check-circle"></i>End-to-end insurance & mediclaim support</li>
+            <li><i class="fas fa-check-circle"></i>Transparent fee structure with no hidden charges</li>
+          </ul>
+          <a href="philosophy.html" class="btn btn-gold"><i class="fas fa-book-open"></i>Our Philosophy</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="section-pad why-bg">
+    <div class="container text-center">
+      <div class="section-tag" data-aos="fade-up">Why Choose POORNAYU</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">The POORNAYU <span>Advantage</span></h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="180">What sets us apart from every other financial
+        advisor in Jaipur.</p>
+      <div class="gold-divider" data-aos="fade-up" data-aos-delay="150"></div>
+      <div class="why-grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="why-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="why-icon-wrap"><i class="fas fa-handshake why-icon"></i></div>
+          <h3>Trusted Advisory</h3>
+          <p>20+ years of transparent, ethical financial guidance with thousands of satisfied clients.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="why-icon-wrap"><i class="fas fa-user-shield why-icon"></i></div>
+          <h3>Client-First Approach</h3>
+          <p>Every recommendation is personalised to your unique financial goals and risk appetite.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="why-icon-wrap"><i class="fas fa-chart-pie why-icon"></i></div>
+          <h3>Diversified Portfolio</h3>
+          <p>From government schemes to real estate — we offer the full spectrum of investment options.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="why-icon-wrap"><i class="fas fa-lock why-icon"></i></div>
+          <h3>Secure & Compliant</h3>
+          <p>All services fully compliant with SEBI, IRDA, and other regulatory frameworks.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="why-icon-wrap"><i class="fas fa-headset why-icon"></i></div>
+          <h3>Lifetime Support</h3>
+          <p>We don't disappear after you invest. Our team provides continuous monitoring, renewal alerts, and claim
+            assistance.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="why-icon-wrap"><i class="fas fa-rupee-sign why-icon"></i></div>
+          <h3>No Hidden Charges</h3>
+          <p>100% transparent fee structure. We earn industry commissions from providers - never from your returns.</p>
+        </div>
+      </div>
+      <div style="margin-top:44px" data-aos="fade-up">
+        <a href="contact.html" class="btn btn-gold"><i class="fas fa-calendar-check"></i>Book Free Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner" data-aos="fade-up">
+    <div class="cta-orb cta-orb-1"></div>
+    <div class="cta-orb cta-orb-2"></div>
+    <div class="container" style="position:relative">
+      <h2>Ready to Secure Your Financial Future?</h2>
+      <p>Book a free consultation today — no obligation, just expert guidance tailored for you.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <a href="contact.html" class="btn btn-dark"><i class="fas fa-calendar-check"></i>Book Free Consultation</a>
+        <a href="tel:+918005561306" class="btn btn-outline" style="border-color:var(--navy);color:var(--navy)"><i
+            class="fas fa-phone-alt"></i>Call Us Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="section-pad" style="background:var(--navy-2)">
+    <div class="container" data-aos="fade-up">
+      <div class="newsletter-wrap">
+        <div class="newsletter-left">
+          <div class="section-tag" style="margin-bottom:14px">Stay Informed</div>
+          <h3 class="section-title" style="margin-bottom:10px">Get <span>Investment Insights</span></h3>
+          <p>Weekly tips on Post Office schemes, insurance, and wealth strategies — delivered free.</p>
+        </div>
+        <form class="newsletter-form" id="newsletter-form" onsubmit="nlSubmit(event)">
+          <input type="email" placeholder="Enter your email address" required id="nlEmail">
+          <button type="submit" class="btn btn-gold"><i class="fas fa-paper-plane"></i>Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    &copy; 2025 POORNAYU: An Investment Hub. All rights reserved.
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="logo.jpg" alt="POORNAYU Logo">
+          <p>Jaipur's most trusted investment consulting hub. Empowering financial growth through expert guidance and
+            personalised solutions since 2010.</p>
+          <div class="footer-social">
+            <a href="https://wa.me/919414042187" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/bhageshbilala" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/bhagesh_13" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="philosophy.html">Philosophy</a>
+          <a href="news.html">News</a>
+          <a href="gallery.html">Gallery</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="services.html">Post Office Schemes</a>
+          <a href="services.html">Mediclaim Policies</a>
+          <a href="services.html">Life Insurance</a>
+          <a href="services.html">Real Estate</a>
+          <a href="services.html">Alternative Investments</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="tel:8005561306"><i class="fas fa-phone-alt" style="margin-right:8px;color:var(--gold)"></i>80055
+            61306</a>
+          <a href="https://wa.me/919414042187"><i class="fab fa-whatsapp"
+              style="margin-right:8px;color:var(--gold)"></i>9414042187</a>
+          <a href="mailto:poornayuhub@gmail.com"><i class="fas fa-envelope"
+              style="margin-right:8px;color:var(--gold)"></i>poornayuhub@gmail.com</a>
+          <a href="#"><i class="fas fa-map-marker-alt" style="margin-right:8px;color:var(--gold)"></i>Sanganer, Jaipur,
+            RJ</a>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2025 <span>POORNAYU: An Investment Hub</span>. All rights reserved. | Designed
+        with <span>♥</span> in Jaipur</div>
+    </div>
   </footer>
 
-  <!-- AOS Init -->
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/919414042187" class="whatsapp-float" target="_blank" title="Chat on WhatsApp"><i
+      class="fab fa-whatsapp"></i></a>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 1000 });
+    AOS.init({ duration: 900, once: true, offset: 80 });
+
+    /* Nav scroll */
+    window.addEventListener('scroll', function () {
+      document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60);
+    });
+    function toggleNav() { document.getElementById('nav-links').classList.toggle('open'); }
+
+    /* Particle Canvas */
+    (function () {
+      var c = document.getElementById('particleCanvas');
+      if (!c) return;
+      var ctx = c.getContext('2d');
+      var particles = [];
+      function resize() { c.width = window.innerWidth; c.height = window.innerHeight; }
+      resize();
+      window.addEventListener('resize', resize);
+      for (var i = 0; i < 55; i++) {
+        particles.push({
+          x: Math.random() * c.width, y: Math.random() * c.height,
+          r: Math.random() * 2 + 0.5,
+          vx: (Math.random() - .5) * .4, vy: (Math.random() - .5) * .4,
+          o: Math.random() * .5 + .1
+        });
+      }
+      function draw() {
+        ctx.clearRect(0, 0, c.width, c.height);
+        particles.forEach(function (p) {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(201,162,39,' + p.o + ')';
+          ctx.fill();
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > c.width) p.vx *= -1;
+          if (p.y < 0 || p.y > c.height) p.vy *= -1;
+        });
+        /* draw lines between close particles */
+        for (var i = 0; i < particles.length; i++) {
+          for (var j = i + 1; j < particles.length; j++) {
+            var dx = particles[i].x - particles[j].x, dy = particles[i].y - particles[j].y;
+            var dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 100) {
+              ctx.beginPath();
+              ctx.strokeStyle = 'rgba(201,162,39,' + ((.08 * (1 - dist / 100))) + ')';
+              ctx.lineWidth = .5;
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+      draw();
+    })();
+
+    /* Counter animation */
+    function animateCounter(el, target, suffix) {
+      var start = 0, step = target / (2000 / 16);
+      var t = setInterval(function () {
+        start += step;
+        if (start >= target) { start = target; clearInterval(t); }
+        el.textContent = Math.floor(start).toLocaleString() + (suffix || '');
+      }, 16);
+    }
+    var countersRun = false;
+    var observer = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting && !countersRun) {
+        countersRun = true;
+        animateCounter(document.getElementById('counter1'), 5000, '+');
+        animateCounter(document.getElementById('counter2'), 20, '+');
+      }
+    }, { threshold: .3 });
+    var hero = document.querySelector('.hero');
+    if (hero) observer.observe(hero);
+
+    /* Strip counters */
+    var stripRan = false;
+    var stripObs = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting && !stripRan) {
+        stripRan = true;
+        document.querySelectorAll('.stat-item .val[data-count]').forEach(function (el) {
+          var n = parseInt(el.dataset.count), s = el.dataset.suffix || '';
+          animateCounter(el, n, s);
+        });
+      }
+    }, { threshold: .5 });
+    var strip = document.querySelector('.stats-strip');
+    if (strip) stripObs.observe(strip);
+
+    /* Testimonials slider */
+    (function () {
+      var track = document.getElementById('testiTrack');
+      var dotsWrap = document.getElementById('testiDots');
+      if (!track) return;
+      var slides = track.querySelectorAll('.testi-slide');
+      var perView = window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+      var total = slides.length;
+      var maxPages = total - perView + 1;
+      var cur = 0;
+      /* create dots */
+      for (var i = 0; i < maxPages; i++) {
+        var d = document.createElement('div');
+        d.className = 'testi-dot' + (i === 0 ? ' active' : '');
+        d.dataset.i = i;
+        d.addEventListener('click', function () { goTo(+this.dataset.i); });
+        dotsWrap.appendChild(d);
+      }
+      function goTo(n) {
+        cur = Math.max(0, Math.min(n, maxPages - 1));
+        var pct = cur * (100 / perView);
+        track.style.transform = 'translateX(-' + pct + '%)';
+        dotsWrap.querySelectorAll('.testi-dot').forEach(function (d, i) { d.classList.toggle('active', i === cur); });
+      }
+      document.getElementById('testiPrev').addEventListener('click', function () { goTo(cur - 1); });
+      document.getElementById('testiNext').addEventListener('click', function () { goTo(cur + 1); });
+      /* set slide widths */
+      slides.forEach(function (s) { s.style.minWidth = 'calc(' + (100 / perView) + '% - ' + (24 * (perView - 1) / perView) + 'px)'; s.style.marginRight = '24px'; });
+      var auto = setInterval(function () { goTo(cur + 1 < maxPages ? cur + 1 : 0); }, 5000);
+      track.addEventListener('mouseenter', function () { clearInterval(auto); });
+    })();
+
+    /* Newsletter */
+    function nlSubmit(e) {
+      e.preventDefault();
+      var email = document.getElementById('nlEmail').value;
+      var btn = e.target.querySelector('button');
+      var origText = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Subscribing...';
+      btn.disabled = true;
+      fetch('https://formspree.io/f/mwpbwllq', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email: email, _subject: 'New Newsletter Subscriber - POORNAYU' })
+      }).then(function (r) {
+        if (r.ok) {
+          btn.innerHTML = '<i class="fas fa-check"></i> Subscribed!';
+          e.target.reset();
+          setTimeout(function () { btn.innerHTML = origText; btn.disabled = false; }, 3000);
+        } else { throw new Error(); }
+      }).catch(function () {
+        btn.innerHTML = origText;
+        btn.disabled = false;
+        alert('Subscription failed. Please try again or WhatsApp us at +91 94140 42187.');
+      });
+    }
+
+    /* service card links to services page */
+    document.querySelectorAll('.service-card').forEach(function (c) {
+      c.addEventListener('click', function () { window.location = 'services.html'; });
+    });
+  </script>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="mobile-sticky-cta">
+    <a href="tel:+918005561306" class="cta-call"><i class="fas fa-phone-alt"></i>Call Now</a>
+    <a href="https://wa.me/919414042187" class="cta-wa" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+  </div>
+
+  <script>
+    // Back to top
+    var btt = document.getElementById('backToTop');
+    if (btt) {
+      window.addEventListener('scroll', function () {
+        btt.classList.toggle('visible', window.scrollY > 300);
+      });
+      btt.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+    // Hamburger X toggle
+    var ham = document.querySelector('.nav-hamburger');
+    var navLinks = document.getElementById('nav-links');
+    if (ham && navLinks) {
+      ham.addEventListener('click', function () {
+        ham.classList.toggle('open');
+      });
+    }
   </script>
 </body>
+
 </html>
-
-
