@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Latest financial news — Post Office schemes, LIC updates, real estate in Jaipur, stock market insights and business news.">
+    <title>Financial News – POORNAYU Investment Hub</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .news-hero {
+            min-height: 52vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: linear-gradient(135deg, #020a18, #041530);
+            overflow: hidden;
+            padding: 120px 0 80px
+        }
+
+        .news-hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: .12;
+            pointer-events: none
+        }
+
+        .news-hero-orb-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--gold);
+            top: -140px;
+            right: -80px;
+            animation: orbF 12s ease-in-out infinite
+        }
+
+        .news-hero-orb-2 {
+            width: 360px;
+            height: 360px;
+            background: #1a4a8f;
+            bottom: -80px;
+            left: -60px;
+            animation: orbF 16s ease-in-out infinite reverse
+        }
+
+        @keyframes orbF {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-24px)
+            }
+        }
+
+        /* TICKER */
+        .news-ticker {
+            background: rgba(201, 162, 39, .08);
+            border-top: 1px solid rgba(201, 162, 39, .2);
+            border-bottom: 1px solid rgba(201, 162, 39, .2);
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap
+        }
+
+        .ticker-inner {
+            display: inline-flex;
+            gap: 56px;
+            animation: ticker 40s linear infinite
+        }
+
+        @keyframes ticker {
+            0% {
+                transform: translateX(0)
+            }
+
+            100% {
+                transform: translateX(-50%)
+            }
+        }
+
+        .ticker-item {
+            font-size: 13px;
+            font-weight: 600;
+            color: rgba(201, 162, 39, .9);
+            flex-shrink: 0;
+            font-family: 'Inter', sans-serif
+        }
+
+        .ticker-item span {
+            color: rgba(255, 255, 255, .5);
+            font-weight: 400
+        }
+
+        .ticker-dot {
+            color: var(--gold);
+            margin: 0 8px
+        }
+
+        /* CATEGORY FILTER */
+        .news-cats {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 48px
+        }
+
+        .news-cat {
+            background: transparent;
+            border: 1px solid rgba(201, 162, 39, .3);
+            color: var(--text-muted);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Inter', sans-serif
+        }
+
+        .news-cat.active,
+        .news-cat:hover {
+            background: var(--gold);
+            color: var(--navy);
+            border-color: var(--gold);
+            box-shadow: 0 4px 16px rgba(201, 162, 39, .3)
+        }
+
+        /* NEWS GRID */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px
+        }
+
+        .news-card {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(201, 162, 39, .15);
+            border-radius: 18px;
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column
+        }
+
+        .news-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(201, 162, 39, .4);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, .28)
+        }
+
+        .news-card.featured {
+            grid-column: span 2
+        }
+
+        .news-card.hidden {
+            display: none
+        }
+
+        .news-card-img {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden
+        }
+
+        .news-card.featured .news-card-img {
+            height: 220px
+        }
+
+        .news-card-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1
+        }
+
+        .news-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            flex-wrap: wrap
+        }
+
+        .news-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-family: 'Inter', sans-serif
+        }
+
+        .badge-postoffice {
+            background: rgba(16, 185, 129, .12);
+            border: 1px solid rgba(16, 185, 129, .25);
+            color: #34d399
+        }
+
+        .badge-lic {
+            background: rgba(59, 130, 246, .12);
+            border: 1px solid rgba(59, 130, 246, .25);
+            color: #60a5fa
+        }
+
+        .badge-property {
+            background: rgba(201, 162, 39, .12);
+            border: 1px solid rgba(201, 162, 39, .25);
+            color: var(--gold)
+        }
+
+        .badge-stock {
+            background: rgba(168, 85, 247, .12);
+            border: 1px solid rgba(168, 85, 247, .25);
+            color: #c084fc
+        }
+
+        .badge-business {
+            background: rgba(239, 68, 68, .12);
+            border: 1px solid rgba(239, 68, 68, .25);
+            color: #f87171
+        }
+
+        .news-date {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-family: 'Inter', sans-serif
+        }
+
+        .news-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.45;
+            margin-bottom: 10px;
+            transition: color .3s
+        }
+
+        .news-card.featured h3 {
+            font-size: 22px
+        }
+
+        .news-card:hover h3 {
+            color: var(--gold)
+        }
+
+        .news-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.75;
+            flex: 1
+        }
+
+        .news-card-footer {
+            margin-top: 18px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(201, 162, 39, .1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .news-source {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .news-source i {
+            color: var(--gold)
+        }
+
+        .news-read-more {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--gold);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: gap .3s;
+            text-decoration: none
+        }
+
+        .news-read-more:hover {
+            gap: 10px
+        }
+
+        /* ICON IMAGES FOR NEWS CARDS */
+        .news-icon-bg {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 72px;
+            opacity: .18;
+            position: absolute;
+            inset: 0
+        }
+
+        .news-card-img-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: flex-end;
+            padding: 16px
+        }
+
+        .news-breaking {
+            display: inline-block;
+            background: rgba(239, 68, 68, .9);
+            color: #fff;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif
+        }
+
+        /* SIDEBAR LAYOUT */
+        .news-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 32px;
+            align-items: start
+        }
+
+        .news-sidebar-card {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(201, 162, 39, .15);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px
+        }
+
+        .news-sidebar-card h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(201, 162, 39, .15)
+        }
+
+        .sidebar-news-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, .05)
+        }
+
+        .sidebar-news-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0
+        }
+
+        .sidebar-num {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+            background: rgba(201, 162, 39, .1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--gold)
+        }
+
+        .sidebar-news-title {
+            font-size: 13px;
+            color: rgba(255, 255, 255, .75);
+            line-height: 1.5;
+            transition: color .3s;
+            cursor: pointer
+        }
+
+        .sidebar-news-title:hover {
+            color: var(--gold)
+        }
+
+        .rates-table {
+            width: 100%;
+            border-collapse: collapse
+        }
+
+        .rates-table td {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, .05);
+            font-size: 13px;
+            font-family: 'Inter', sans-serif
+        }
+
+        .rates-table td:first-child {
+            color: var(--text-muted)
+        }
+
+        .rates-table td:last-child {
+            text-align: right;
+            font-weight: 700;
+            color: var(--gold)
+        }
+
+        .rate-up {
+            color: #34d399 !important
+        }
+
+        .rate-down {
+            color: #f87171 !important
+        }
+
+        @media(max-width:1100px) {
+            .news-layout {
+                grid-template-columns: 1fr
+            }
+
+            .news-sidebar {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 20px
+            }
+        }
+
+        @media(max-width:768px) {
+            .news-grid {
+                grid-template-columns: 1fr
+            }
+
+            .news-card.featured {
+                grid-column: span 1
+            }
+
+            .news-sidebar {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <div class="top-social"><a href="https://wa.me/919414042187" target="_blank" class="wa"><i
+                        class="fab fa-whatsapp"></i></a><a href="https://www.instagram.com/bhageshbilala"
+                    target="_blank" class="ig"><i class="fab fa-instagram"></i></a><a href="https://x.com/bhagesh_13"
+                    target="_blank" class="tw"><i class="fab fa-x-twitter"></i></a></div>
+            <div class="top-contact"><a href="tel:+918005561306"><i class="fas fa-phone-alt"></i>+91 80055 61306</a><a
+                    href="mailto:poornayuhub@gmail.com"><i class="fas fa-envelope"></i>poornayuhub@gmail.com</a></div>
+        </div>
+    </div>
+    <nav class="main-nav" id="main-nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo"><img src="logo.jpg" alt="POORNAYU"></a>
+            <div class="nav-links" id="nav-links"><a href="index.html">Home</a><a href="services.html">Services</a><a
+                    href="philosophy.html">Philosophy</a><a href="news.html" class="active">News</a><a
+                    href="testimonials.html">Testimonials</a><a href="faqs.html">FAQs</a><a
+                    href="gallery.html">Gallery</a><a href="contact.html" class="nav-cta">Contact Us</a></div>
+            <div class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')">
+                <span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="news-hero">
+        <div class="news-hero-orb news-hero-orb-1"></div>
+        <div class="news-hero-orb news-hero-orb-2"></div>
+        <div
+            style="position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,39,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,39,.04) 1px,transparent 1px);background-size:60px 60px">
+        </div>
+        <div class="container" style="position:relative;z-index:2">
+            <div class="section-tag" data-aos="fade-up">Stay Informed, Invest Better</div>
+            <h1 class="section-title" style="font-size:clamp(36px,5vw,66px)" data-aos="fade-up" data-aos-delay="100">
+                Financial <span>News & Updates</span></h1>
+            <div class="gold-divider" data-aos="fade-up" data-aos-delay="150"></div>
+            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Post Office • LIC • Real Estate • Stock
+                Market • Business — all the news that matters to your investments.</p>
+        </div>
+    </section>
+
+    <!-- LIVE TICKER -->
+    <div class="news-ticker">
+        <div class="ticker-inner" id="tickerInner">
+            <span class="ticker-item"><i class="fas fa-circle"
+                    style="font-size:7px;margin-right:6px;color:var(--gold)"></i>PPF Rate <span>7.1% p.a. (Q1
+                    2025)</span></span>
+            <span class="ticker-dot">◆</span>
+            <span class="ticker-item">NSC Rate <span>7.7% p.a.</span></span>
+            <span class="ticker-dot">◆</span>
+            <span class="ticker-item">SCSS <span>8.2% p.a. — Senior Citizen scheme</span></span>
+            <span class="ticker-dot">◆</span>
+            <span class="ticker-item">Sukanya Samriddhi <span>8.0% p.a.</span></span>
+            <span class="ticker-dot">◆</span>
+            <span class="ticker-item">Sensex <span>~73,500 pts</span></span>
+            <span class="ticker-dot">◆</span>
+            <span class="ticker-item">Nifty 50 <span>~22,250 pts</span></span>
+            <span class="ticker-dot">◆</span>
+            <span class="ticker-item">Gold <span>₹72,000/10gm (MCX)</span></span>
+            <span class="ticker-dot">◆</span>
+            <span class="ticker-item">Repo Rate <span>6.25% (RBI Feb 2025)</span></span>
+            <span class="ticker-dot">◆</span>
+            <span class="ticker-item">Jaipur Property Index <span>↑ 11% YoY</span></span>
+            <span class="ticker-dot">◆</span>
+            <span class="ticker-item">LIC Jeevan Utsav <span>Guaranteed returns plan — New launch</span></span>
+            <span class="ticker-dot">◆</span>
+            <!-- duplicate for seamless loop -->
+            <span class="ticker-item"><i class="fas fa-circle"
+                    style="font-size:7px;margin-right:6px;color:var(--gold)"></i>PPF Rate <span>7.1% p.a. (Q1
+                    2025)</span></span>
+            <span class="ticker-dot">◆</span>
+            <span class="ticker-item">NSC Rate <span>7.7% p.a.</span></span>
+            <span class="ticker-dot">◆</span>
+            <span class="ticker-item">SCSS <span>8.2% p.a. — Senior Citizen scheme</span></span>
+            <span class="ticker-dot">◆</span>
+            <span class="ticker-item">Sukanya Samriddhi <span>8.0% p.a.</span></span>
+            <span class="ticker-dot">◆</span>
+            <span class="ticker-item">Sensex <span>~73,500 pts</span></span>
+            <span class="ticker-dot">◆</span>
+            <span class="ticker-item">Nifty 50 <span>~22,250 pts</span></span>
+            <span class="ticker-dot">◆</span>
+            <span class="ticker-item">Gold <span>₹72,000/10gm (MCX)</span></span>
+            <span class="ticker-dot">◆</span>
+            <span class="ticker-item">Repo Rate <span>6.25% (RBI Feb 2025)</span></span>
+            <span class="ticker-dot">◆</span>
+            <span class="ticker-item">Jaipur Property Index <span>↑ 11% YoY</span></span>
+            <span class="ticker-dot">◆</span>
+            <span class="ticker-item">LIC Jeevan Utsav <span>Guaranteed returns plan — New launch</span></span>
+        </div>
+    </div>
+
+    <!-- MAIN SECTION -->
+    <section class="section-pad bg-pattern">
+        <div class="container">
+
+            <!-- FILTER TABS -->
+            <div class="news-cats" data-aos="fade-up">
+                <button class="news-cat active" onclick="filterNews('all',this)">All News</button>
+                <button class="news-cat" onclick="filterNews('postoffice',this)"><i class="fas fa-envelope"></i> Post
+                    Office</button>
+                <button class="news-cat" onclick="filterNews('lic',this)"><i class="fas fa-shield-alt"></i> LIC &
+                    Insurance</button>
+                <button class="news-cat" onclick="filterNews('property',this)"><i class="fas fa-home"></i> Real
+                    Estate</button>
+                <button class="news-cat" onclick="filterNews('stock',this)"><i class="fas fa-chart-line"></i> Stock
+                    Market</button>
+                <button class="news-cat" onclick="filterNews('business',this)"><i class="fas fa-briefcase"></i>
+                    Business</button>
+            </div>
+
+            <div class="news-layout">
+                <!-- NEWS GRID -->
+                <div>
+                    <div class="news-grid" id="newsGrid">
+
+                        <!-- FEATURED: POST OFFICE -->
+                        <div class="news-card featured" data-ncat="postoffice" data-aos="fade-up">
+                            <div class="news-card-img"
+                                style="background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(2,10,24,.9))">
+                                <div class="news-icon-bg"><i class="fas fa-landmark"></i></div>
+                                <div class="news-card-img-overlay"><span class="news-breaking">📌 Important
+                                        Update</span></div>
+                            </div>
+                            <div class="news-card-body">
+                                <div class="news-meta"><span class="news-badge badge-postoffice"><i
+                                            class="fas fa-envelope"></i>Post Office</span><span class="news-date">Feb
+                                        2025</span></div>
+                                <h3>Government Keeps Small Savings Scheme Rates Unchanged for Q1 FY2025-26</h3>
+                                <p>The government has maintained all Post Office small savings scheme rates for the
+                                    January–March 2025 quarter. PPF remains at 7.1%, Senior Citizens Savings Scheme
+                                    (SCSS) at 8.2%, Sukanya Samriddhi Yojana at 8.0%, and NSC at 7.7%, offering strong
+                                    guaranteed returns in an evolving interest rate environment.</p>
+                                <div class="news-card-footer">
+                                    <span class="news-source"><i class="fas fa-newspaper"></i>Ministry of Finance</span>
+                                    <a class="news-read-more"
+                                        href="https://www.financialexpress.com/money/post-office-small-savings-scheme-interest-rate-2025/"
+                                        target="_blank">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- LIC -->
+                        <div class="news-card" data-ncat="lic" data-aos="fade-up" data-aos-delay="100">
+                            <div class="news-card-img"
+                                style="background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(2,10,24,.9))">
+                                <div class="news-icon-bg"><i class="fas fa-shield-alt"></i></div>
+                            </div>
+                            <div class="news-card-body">
+                                <div class="news-meta"><span class="news-badge badge-lic"><i
+                                            class="fas fa-shield-alt"></i>LIC</span><span class="news-date">Jan
+                                        2025</span></div>
+                                <h3>LIC Launches New 'Jeevan Utsav' Plan with Lifetime Guaranteed Additions</h3>
+                                <p>LIC's newest non-linked, non-participating individual savings life insurance plan
+                                    guarantees lifetime additions at 10% per year, making it ideal for long-term
+                                    security seekers.</p>
+                                <div class="news-card-footer">
+                                    <span class="news-source"><i class="fas fa-newspaper"></i>LIC India</span>
+                                    <a class="news-read-more" href="https://licindia.in/" target="_blank">Read More <i
+                                            class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PROPERTY JAIPUR -->
+                        <div class="news-card" data-ncat="property" data-aos="fade-up" data-aos-delay="100">
+                            <div class="news-card-img"
+                                style="background:linear-gradient(135deg,rgba(201,162,39,.08),rgba(2,10,24,.9))">
+                                <div class="news-icon-bg"><i class="fas fa-city"></i></div>
+                            </div>
+                            <div class="news-card-body">
+                                <div class="news-meta"><span class="news-badge badge-property"><i
+                                            class="fas fa-home"></i>Real Estate</span><span class="news-date">Feb
+                                        2025</span></div>
+                                <h3>Jaipur Real Estate Surges 11% — Sanganer & Ajmer Road Among Top Zones</h3>
+                                <p>Jaipur's property market registered 11% annual price appreciation in FY2025, with
+                                    Sanganer, Mansarovar Extension, and Ajmer Road emerging as the hottest investment
+                                    corridors due to infrastructure upgrades.</p>
+                                <div class="news-card-footer">
+                                    <span class="news-source"><i class="fas fa-newspaper"></i>Economic Times</span>
+                                    <a class="news-read-more"
+                                        href="https://economictimes.indiatimes.com/topic/jaipur-real-estate"
+                                        target="_blank">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- STOCK MARKET -->
+                        <div class="news-card" data-ncat="stock" data-aos="fade-up">
+                            <div class="news-card-img"
+                                style="background:linear-gradient(135deg,rgba(168,85,247,.08),rgba(2,10,24,.9))">
+                                <div class="news-icon-bg"><i class="fas fa-chart-line"></i></div>
+                            </div>
+                            <div class="news-card-body">
+                                <div class="news-meta"><span class="news-badge badge-stock"><i
+                                            class="fas fa-chart-line"></i>Stock Market</span><span class="news-date">Feb
+                                        2025</span></div>
+                                <h3>Sensex Rebounds — FIIs Return After 3-Month Selling Streak</h3>
+                                <p>Indian equity markets saw renewed optimism as Foreign Institutional Investors (FIIs)
+                                    turned net buyers in February 2025. Sensex bounced to 73,500 zone while Nifty held
+                                    above 22,200, driven by strong Q3 earnings from BFSI and IT sectors.</p>
+                                <div class="news-card-footer">
+                                    <span class="news-source"><i class="fas fa-newspaper"></i>Moneycontrol</span>
+                                    <a class="news-read-more"
+                                        href="https://www.moneycontrol.com/markets/indian-indices/" target="_blank">Read
+                                        More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BUSINESS -->
+                        <div class="news-card" data-ncat="business" data-aos="fade-up" data-aos-delay="100">
+                            <div class="news-card-img"
+                                style="background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(2,10,24,.9))">
+                                <div class="news-icon-bg"><i class="fas fa-briefcase"></i></div>
+                            </div>
+                            <div class="news-card-body">
+                                <div class="news-meta"><span class="news-badge badge-business"><i
+                                            class="fas fa-briefcase"></i>Business</span><span class="news-date">Feb
+                                        2025</span></div>
+                                <h3>RBI Cuts Repo Rate to 6.25% — Home Loan EMIs Set to Drop</h3>
+                                <p>In a major boost to the economy, RBI reduced the repo rate by 25 basis points to
+                                    6.25% in February 2025. This move is expected to lower home loan, auto loan, and
+                                    business loan EMIs, and boost investment activity across sectors.</p>
+                                <div class="news-card-footer">
+                                    <span class="news-source"><i class="fas fa-newspaper"></i>RBI / Mint</span>
+                                    <a class="news-read-more" href="https://www.livemint.com/economy/rbi-repo-rate/"
+                                        target="_blank">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- POST OFFICE 2 -->
+                        <div class="news-card" data-ncat="postoffice" data-aos="fade-up">
+                            <div class="news-card-img"
+                                style="background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(2,10,24,.9))">
+                                <div class="news-icon-bg"><i class="fas fa-piggy-bank"></i></div>
+                            </div>
+                            <div class="news-card-body">
+                                <div class="news-meta"><span class="news-badge badge-postoffice"><i
+                                            class="fas fa-envelope"></i>Post Office</span><span class="news-date">Jan
+                                        2025</span></div>
+                                <h3>MIS Monthly Income Scheme: ₹9 Lakh Limit for Joint Accounts Continues</h3>
+                                <p>The Post Office Monthly Income Scheme (MIS) with its 7.4% annual return continues to
+                                    attract retired investors. Joint accounts can invest up to ₹9 lakh, offering a
+                                    guaranteed fixed monthly income — ideal for senior citizens seeking a steady payout.
+                                </p>
+                                <div class="news-card-footer">
+                                    <span class="news-source"><i class="fas fa-newspaper"></i>IndiaPost</span>
+                                    <a class="news-read-more"
+                                        href="https://www.indiapost.gov.in/Financial/Pages/Content/Post-Office-Saving-Schemes.aspx"
+                                        target="_blank">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- PROPERTY 2 -->
+                        <div class="news-card" data-ncat="property" data-aos="fade-up" data-aos-delay="100">
+                            <div class="news-card-img"
+                                style="background:linear-gradient(135deg,rgba(201,162,39,.06),rgba(2,10,24,.9))">
+                                <div class="news-icon-bg"><i class="fas fa-map-marked-alt"></i></div>
+                            </div>
+                            <div class="news-card-body">
+                                <div class="news-meta"><span class="news-badge badge-property"><i
+                                            class="fas fa-home"></i>Real Estate</span><span class="news-date">Jan
+                                        2025</span></div>
+                                <h3>Jaipur Metro Phase 2 to Boost Property Values Along New Corridors</h3>
+                                <p>With Phase 2 of the Jaipur Metro targeting new routes through Mansarovar, Vaishali
+                                    Nagar, and Civil Lines, property analysts predict 25–35% value appreciation in
+                                    adjacent micro-markets over the next 3–4 years.</p>
+                                <div class="news-card-footer">
+                                    <span class="news-source"><i class="fas fa-newspaper"></i>Times of India</span>
+                                    <a class="news-read-more"
+                                        href="https://timesofindia.indiatimes.com/topic/jaipur-metro"
+                                        target="_blank">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- LIC 2 -->
+                        <div class="news-card" data-ncat="lic" data-aos="fade-up">
+                            <div class="news-card-img"
+                                style="background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(2,10,24,.9))">
+                                <div class="news-icon-bg"><i class="fas fa-heart"></i></div>
+                            </div>
+                            <div class="news-card-body">
+                                <div class="news-meta"><span class="news-badge badge-lic"><i
+                                            class="fas fa-shield-alt"></i>Insurance</span><span class="news-date">Feb
+                                        2025</span></div>
+                                <h3>Health Insurance Premiums Rise 12% — How to Reduce Your Annual Cost</h3>
+                                <p>Mediclaim premiums across major insurers rose 10–15% in FY2025. Experts recommend
+                                    porting policies, opting for family floater plans, and adding super top-ups to
+                                    maximise coverage while keeping premiums affordable.</p>
+                                <div class="news-card-footer">
+                                    <span class="news-source"><i class="fas fa-newspaper"></i>IRDAI / Money9</span>
+                                    <a class="news-read-more" href="https://www.money9.com/insurance"
+                                        target="_blank">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- STOCK 2 -->
+                        <div class="news-card" data-ncat="stock" data-aos="fade-up" data-aos-delay="100">
+                            <div class="news-card-img"
+                                style="background:linear-gradient(135deg,rgba(168,85,247,.08),rgba(2,10,24,.9))">
+                                <div class="news-icon-bg"><i class="fas fa-coins"></i></div>
+                            </div>
+                            <div class="news-card-body">
+                                <div class="news-meta"><span class="news-badge badge-stock"><i
+                                            class="fas fa-chart-line"></i>Stock Market</span><span class="news-date">Feb
+                                        2025</span></div>
+                                <h3>Gold Hits Record High ₹72,000 per 10gm — Should You Invest Now?</h3>
+                                <p>Gold prices soared to record highs amid global uncertainty and a weakening dollar.
+                                    Financial advisors suggest allocating 10–15% of portfolio to gold via Sovereign Gold
+                                    Bonds (SGBs) or Gold ETFs for optimal risk-adjusted returns.</p>
+                                <div class="news-card-footer">
+                                    <span class="news-source"><i class="fas fa-newspaper"></i>MCX / ET Markets</span>
+                                    <a class="news-read-more"
+                                        href="https://economictimes.indiatimes.com/markets/commodities/mcx-gold-silver-today"
+                                        target="_blank">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- BUSINESS 2 -->
+                        <div class="news-card featured" data-ncat="business" data-aos="fade-up">
+                            <div class="news-card-img"
+                                style="background:linear-gradient(135deg,rgba(239,68,68,.08),rgba(2,10,24,.9))">
+                                <div class="news-icon-bg"><i class="fas fa-chart-bar"></i></div>
+                                <div class="news-card-img-overlay"><span class="news-breaking">🔥 Budget 2025</span>
+                                </div>
+                            </div>
+                            <div class="news-card-body">
+                                <div class="news-meta"><span class="news-badge badge-business"><i
+                                            class="fas fa-briefcase"></i>Budget & Tax</span><span class="news-date">Feb
+                                        2025</span></div>
+                                <h3>Union Budget 2025: No Tax Up to ₹12 Lakh — A Massive Boost for the Middle Class</h3>
+                                <p>Finance Minister Nirmala Sitharaman's Budget 2025 introduced a historic relief for
+                                    salaried taxpayers — no income tax for annual income up to ₹12 lakh under the new
+                                    regime. The move is expected to increase disposable income, spending, and investment
+                                    capacity for crores of Indian families, creating a ripple effect across savings
+                                    schemes, insurance uptake, and real estate demand.</p>
+                                <div class="news-card-footer">
+                                    <span class="news-source"><i class="fas fa-newspaper"></i>Hindustan Times / Income
+                                        Tax India</span>
+                                    <a class="news-read-more" href="https://incometaxindia.gov.in/" target="_blank">Read
+                                        More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- POST OFFICE 3 -->
+                        <div class="news-card" data-ncat="postoffice" data-aos="fade-up">
+                            <div class="news-card-img"
+                                style="background:linear-gradient(135deg,rgba(16,185,129,.08),rgba(2,10,24,.9))">
+                                <div class="news-icon-bg"><i class="fas fa-university"></i></div>
+                            </div>
+                            <div class="news-card-body">
+                                <div class="news-meta"><span class="news-badge badge-postoffice"><i
+                                            class="fas fa-envelope"></i>Post Office</span><span class="news-date">Jan
+                                        2025</span></div>
+                                <h3>SCSS Limit Raised: Senior Citizens Can Now Invest up to ₹30 Lakh</h3>
+                                <p>In a landmark move for senior citizens, the government raised the SCSS (Senior
+                                    Citizens Savings Scheme) investment limit from ₹15 lakh to ₹30 lakh. At 8.2% per
+                                    annum paid quarterly, this makes SCSS one of the highest-returning safe investments
+                                    for retirees.</p>
+                                <div class="news-card-footer">
+                                    <span class="news-source"><i class="fas fa-newspaper"></i>India Post / Economic
+                                        Times</span>
+                                    <a class="news-read-more"
+                                        href="https://www.indiapost.gov.in/Financial/Pages/Content/Post-Office-Saving-Schemes.aspx"
+                                        target="_blank">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- /news-grid -->
+                </div><!-- /main col -->
+
+                <!-- SIDEBAR -->
+                <div class="news-sidebar">
+                    <!-- CURRENT RATES -->
+                    <div class="news-sidebar-card" data-aos="fade-left">
+                        <h4><i class="fas fa-percentage" style="margin-right:6px"></i>Current Investment Rates</h4>
+                        <table class="rates-table">
+                            <tr>
+                                <td>PPF</td>
+                                <td class="rate-up">7.1% p.a.</td>
+                            </tr>
+                            <tr>
+                                <td>NSC</td>
+                                <td class="rate-up">7.7% p.a.</td>
+                            </tr>
+                            <tr>
+                                <td>SCSS</td>
+                                <td class="rate-up">8.2% p.a.</td>
+                            </tr>
+                            <tr>
+                                <td>SSY</td>
+                                <td class="rate-up">8.0% p.a.</td>
+                            </tr>
+                            <tr>
+                                <td>MIS</td>
+                                <td class="rate-up">7.4% p.a.</td>
+                            </tr>
+                            <tr>
+                                <td>Repo Rate</td>
+                                <td style="color:var(--gold)">6.25%</td>
+                            </tr>
+                            <tr>
+                                <td>Gold (MCX)</td>
+                                <td class="rate-up">₹72,000</td>
+                            </tr>
+                            <tr>
+                                <td>Sensex</td>
+                                <td style="color:var(--gold)">~73,500</td>
+                            </tr>
+                        </table>
+                        <div
+                            style="margin-top:12px;font-size:11px;color:var(--text-muted);font-family:'Inter',sans-serif">
+                            Rates indicative. Q1 FY2025-26</div>
+                    </div>
+
+                    <!-- TOP STORIES -->
+                    <div class="news-sidebar-card" data-aos="fade-left" data-aos-delay="100">
+                        <h4><i class="fas fa-fire" style="margin-right:6px"></i>Top Stories</h4>
+                        <div class="sidebar-news-item">
+                            <div class="sidebar-num">1</div>
+                            <div class="sidebar-news-title">Budget 2025 — No tax up to ₹12 Lakh income</div>
+                        </div>
+                        <div class="sidebar-news-item">
+                            <div class="sidebar-num">2</div>
+                            <div class="sidebar-news-title">RBI rate cut to 6.25% — biggest in 5 years</div>
+                        </div>
+                        <div class="sidebar-news-item">
+                            <div class="sidebar-num">3</div>
+                            <div class="sidebar-news-title">Jaipur property up 11% in FY2025</div>
+                        </div>
+                        <div class="sidebar-news-item">
+                            <div class="sidebar-num">4</div>
+                            <div class="sidebar-num" style="display:none"></div>
+                            <div class="sidebar-news-title">Gold at all-time high ₹72,000/10gm</div>
+                        </div>
+                        <div class="sidebar-news-item">
+                            <div class="sidebar-num">5</div>
+                            <div class="sidebar-news-title">LIC Jeevan Utsav — lifetime guaranteed plan</div>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="news-sidebar-card"
+                        style="background:rgba(201,162,39,.06);border-color:rgba(201,162,39,.25);text-align:center"
+                        data-aos="fade-left" data-aos-delay="150">
+                        <h4 style="text-align:center">Get Expert Advice</h4>
+                        <p
+                            style="font-size:13px;color:var(--text-muted);margin-bottom:20px;font-family:'Inter',sans-serif">
+                            Not sure how news affects your portfolio? Our advisors can explain what it means for
+                            <em>you</em>.</p>
+                        <a href="contact.html" class="btn btn-gold"
+                            style="width:100%;justify-content:center;margin-bottom:12px"><i
+                                class="fas fa-calendar-check"></i>Free Consultation</a>
+                        <a href="https://wa.me/919414042187" class="btn btn-outline"
+                            style="width:100%;justify-content:center" target="_blank"><i
+                                class="fab fa-whatsapp"></i>WhatsApp Us</a>
+                    </div>
+                </div><!-- /sidebar -->
+
+            </div><!-- /news-layout -->
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><img src="logo.jpg" alt="POORNAYU Logo">
+                    <p>Jaipur's most trusted investment consulting hub. Empowering financial growth through expert
+                        guidance since 2010.</p>
+                    <div class="footer-social"><a href="https://wa.me/919414042187" target="_blank"><i
+                                class="fab fa-whatsapp"></i></a><a href="https://www.instagram.com/bhageshbilala"
+                            target="_blank"><i class="fab fa-instagram"></i></a><a href="https://x.com/bhagesh_13"
+                            target="_blank"><i class="fab fa-x-twitter"></i></a></div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4><a href="index.html">Home</a><a href="services.html">Services</a><a
+                        href="news.html">News</a><a href="philosophy.html">Philosophy</a><a
+                        href="gallery.html">Gallery</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4><a href="services.html">Post Office Schemes</a><a href="services.html">Mediclaim
+                        Policies</a><a href="services.html">Life Insurance</a><a href="services.html">Real Estate</a><a
+                        href="services.html">Alternative Investments</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4><a href="tel:8005561306"><i class="fas fa-phone-alt"
+                            style="margin-right:8px;color:var(--gold)"></i>80055 61306</a><a
+                        href="https://wa.me/919414042187"><i class="fab fa-whatsapp"
+                            style="margin-right:8px;color:var(--gold)"></i>9414042187</a><a
+                        href="mailto:poornayuhub@gmail.com"><i class="fas fa-envelope"
+                            style="margin-right:8px;color:var(--gold)"></i>poornayuhub@gmail.com</a><a href="#"><i
+                            class="fas fa-map-marker-alt" style="margin-right:8px;color:var(--gold)"></i>Sanganer,
+                        Jaipur, RJ</a>
+                </div>
+            </div>
+            <div class="footer-bottom">&copy; 2025 <span>POORNAYU: An Investment Hub</span>. All rights reserved.</div>
+        </div>
+    </footer>
+    <a href="https://wa.me/919414042187" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 900, once: true, offset: 80 });
+        window.addEventListener('scroll', function () { document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60); });
+        function filterNews(cat, btn) {
+            document.querySelectorAll('.news-cat').forEach(function (b) { b.classList.remove('active'); });
+            btn.classList.add('active');
+            document.querySelectorAll('.news-card').forEach(function (card) {
+                card.classList.toggle('hidden', cat !== 'all' && card.dataset.ncat !== cat);
+            });
+        }
+    </script>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="mobile-sticky-cta">
+    <a href="tel:+918005561306" class="cta-call"><i class="fas fa-phone-alt"></i>Call Now</a>
+    <a href="https://wa.me/919414042187" class="cta-wa" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+  </div>
+
+  <script>
+    // Back to top
+    var btt = document.getElementById('backToTop');
+    if(btt){
+      window.addEventListener('scroll', function(){
+        btt.classList.toggle('visible', window.scrollY > 300);
+      });
+      btt.addEventListener('click', function(){
+        window.scrollTo({top:0, behavior:'smooth'});
+      });
+    }
+    // Hamburger X toggle
+    var ham = document.querySelector('.nav-hamburger');
+    var navLinks = document.getElementById('nav-links');
+    if(ham && navLinks){
+      ham.addEventListener('click', function(){
+        ham.classList.toggle('open');
+      });
+    }
+  </script>
+</body>
+
+</html>
