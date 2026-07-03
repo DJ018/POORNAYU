@@ -1,131 +1,578 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gallery - POORNAYU</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="POORNAYU Gallery — our office, events, and client moments in Jaipur.">
+  <title>Gallery – POORNAYU Investment Hub</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: #f4faff;
-      color: #002244;
-    }
-
-    .logo-container {
+    .gallery-hero {
+      min-height: 52vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 40px 0 10px 0;
+      position: relative;
+      background: linear-gradient(135deg, #020a18, #041530);
+      overflow: hidden;
+      padding: 120px 0 80px
     }
 
-    .logo-container img {
-      width: 220px;
-      height: auto;
+    .gallery-hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: .12;
+      pointer-events: none
     }
 
-    header nav {
-      background: #002244;
-      text-align: center;
-      padding: 15px 0;
+    .gallery-hero-orb-1 {
+      width: 500px;
+      height: 500px;
+      background: var(--gold);
+      top: -150px;
+      left: -80px;
+      animation: orbF 13s ease-in-out infinite
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-      font-size: 16px;
+    .gallery-hero-orb-2 {
+      width: 340px;
+      height: 340px;
+      background: #1a4a8f;
+      bottom: -80px;
+      right: -60px;
+      animation: orbF 17s ease-in-out infinite reverse
     }
 
-    .section {
-      max-width: 1100px;
-      margin: 60px auto;
-      padding: 0 20px;
-      text-align: center;
+    @keyframes orbF {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-24px)
+      }
     }
 
-    .section h2 {
-      font-size: 38px;
-      color: #004080;
-      margin-bottom: 40px;
-      animation: fadeInDown 0.8s ease-in-out;
+    /* FILTER TABS */
+    .gal-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 48px
     }
 
-    .gallery-grid {
+    .gal-tab {
+      padding: 10px 24px;
+      border-radius: 50px;
+      border: 1px solid rgba(201, 162, 39, .3);
+      background: transparent;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      letter-spacing: .5px
+    }
+
+    .gal-tab.active,
+    .gal-tab:hover {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold);
+      box-shadow: 0 4px 18px rgba(201, 162, 39, .35)
+    }
+
+    /* GALLERY GRID */
+    .gal-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      animation: fadeInUp 1s ease;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 280px;
+      gap: 20px
     }
 
-    .gallery-grid a img {
+    .gal-item {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(201, 162, 39, .15);
+      cursor: pointer;
+      transition: transform .35s, box-shadow .35s, border-color .35s
+    }
+
+    .gal-item:hover {
+      border-color: rgba(201, 162, 39, .55);
+      box-shadow: 0 20px 56px rgba(0, 0, 0, .4);
+      transform: translateY(-4px) scale(1.01)
+    }
+
+    .gal-item.tall {
+      grid-row: span 2
+    }
+
+    .gal-item.wide {
+      grid-column: span 2
+    }
+
+    .gal-item.hidden {
+      display: none
+    }
+
+    /* PHOTO */
+    .gal-photo {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform .5s ease
+    }
+
+    .gal-item:hover .gal-photo {
+      transform: scale(1.06)
+    }
+
+    .gal-grad {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(2, 10, 24, .88) 0%, rgba(2, 10, 24, .18) 55%, transparent 100%)
+    }
+
+    .gal-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(201, 162, 39, .18);
+      border: 1px solid rgba(201, 162, 39, .45);
+      border-radius: 50px;
+      padding: 4px 14px;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px)
+    }
+
+    .gal-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 22px;
+      transform: translateY(6px);
+      transition: transform .35s
+    }
+
+    .gal-item:hover .gal-caption {
+      transform: translateY(0)
+    }
+
+    .gal-caption-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+      line-height: 1.3
+    }
+
+    .gal-item.wide .gal-caption-title {
+      font-size: 20px
+    }
+
+    .gal-caption-sub {
+      font-size: 12px;
+      color: rgba(201, 162, 39, .92);
+      font-family: 'Inter', sans-serif
+    }
+
+    .gal-expand {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(.7);
+      width: 48px;
+      height: 48px;
+      background: rgba(201, 162, 39, .18);
+      border: 1px solid rgba(201, 162, 39, .5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--gold);
+      opacity: 0;
+      transition: all .35s;
+      backdrop-filter: blur(8px)
+    }
+
+    .gal-item:hover .gal-expand {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1)
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 10, 24, .97);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(16px)
+    }
+
+    .lightbox.open {
+      display: flex
+    }
+
+    .lb-wrap {
+      max-width: 840px;
+      width: 92%;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(201, 162, 39, .2);
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative
+    }
+
+    .lb-img {
       width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 460px;
+      background: center/cover no-repeat
     }
 
-    .gallery-grid a:hover img {
-      transform: scale(1.05);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    .lb-body {
+      padding: 28px 32px 32px
     }
 
-    footer {
-      background: #002244;
-      color: white;
-      text-align: center;
-      padding: 16px;
-      margin-top: 50px;
+    .lb-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 2;
+      width: 38px;
+      height: 38px;
+      background: rgba(2, 10, 24, .7);
+      border: 1px solid rgba(201, 162, 39, .4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--gold);
+      cursor: pointer;
+      transition: var(--transition);
+      backdrop-filter: blur(8px)
+    }
+
+    .lb-close:hover {
+      background: var(--gold);
+      color: var(--navy)
+    }
+
+    .lb-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px
+    }
+
+    .lb-desc {
       font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 22px
     }
 
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-30px); }
-      to { opacity: 1; transform: translateY(0); }
+    @media(max-width:1024px) {
+      .gal-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 240px
+      }
+
+      .gal-item.wide {
+        grid-column: span 2
+      }
+
+      .gal-item.tall {
+        grid-row: auto
+      }
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    @media(max-width:640px) {
+      .gal-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 240px
+      }
+
+      .gal-item.wide,
+      .gal-item.tall {
+        grid-column: auto;
+        grid-row: auto
+      }
+
+      .lb-img {
+        height: 240px
+      }
     }
   </style>
 </head>
+
 <body>
-
-  <div class="logo-container">
-    <img src="logo.jpg" alt="POORNAYU Logo">
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-social"><a href="https://wa.me/919414042187" target="_blank" class="wa"><i
+            class="fab fa-whatsapp"></i></a><a href="https://www.instagram.com/bhageshbilala" target="_blank"
+          class="ig"><i class="fab fa-instagram"></i></a><a href="https://x.com/bhagesh_13" target="_blank"
+          class="tw"><i class="fab fa-x-twitter"></i></a></div>
+      <div class="top-contact"><a href="tel:+918005561306"><i class="fas fa-phone-alt"></i>+91 80055 61306</a><a
+          href="mailto:poornayuhub@gmail.com"><i class="fas fa-envelope"></i>poornayuhub@gmail.com</a></div>
+    </div>
   </div>
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="logo.jpg" alt="POORNAYU"></a>
+      <div class="nav-links" id="nav-links"><a href="index.html">Home</a><a href="services.html">Services</a><a
+          href="philosophy.html">Philosophy</a><a href="news.html">News</a><a
+          href="testimonials.html">Testimonials</a><a href="faqs.html">FAQs</a><a href="gallery.html"
+          class="active">Gallery</a><a href="contact.html" class="nav-cta">Contact Us</a></div>
+      <div class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span></div>
+    </div>
+  </nav>
 
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="philosophy.html">Philosophy</a>
-      <a href="team.html">Team</a>
-      <a href="testimonials.html">Testimonials</a>
-      <a href="faqs.html">FAQs</a>
-      <a href="why.html">Why Us</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-
-  <section class="section">
-    <h2>Gallery</h2>
-    <div class="gallery-grid">
-      <a href="gallery1.png" data-lightbox="poornayu-gallery" data-title="Financial Seminar"><img src="gallery1.png" alt="Gallery 1"></a>
-      <a href="gallery2.png" data-lightbox="poornayu-gallery" data-title="Investor Meetup"><img src="gallery2.png" alt="Gallery 2"></a>
-      <a href="gallery3.png" data-lightbox="poornayu-gallery" data-title="Client Interaction"><img src="gallery3.png" alt="Gallery 3"></a>
-      <a href="gallery4.png" data-lightbox="poornayu-gallery" data-title="Team Workshop"><img src="gallery4.png" alt="Gallery 4"></a>
+  <!-- HERO -->
+  <section class="gallery-hero">
+    <div class="gallery-hero-orb gallery-hero-orb-1"></div>
+    <div class="gallery-hero-orb gallery-hero-orb-2"></div>
+    <div
+      style="position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,39,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,39,.04) 1px,transparent 1px);background-size:60px 60px">
+    </div>
+    <div class="container" style="position:relative;z-index:2">
+      <div class="section-tag" data-aos="fade-up">A Glimpse Inside</div>
+      <h1 class="section-title" style="font-size:clamp(36px,5vw,66px)" data-aos="fade-up" data-aos-delay="100">Our
+        <span>Gallery</span></h1>
+      <div class="gold-divider" data-aos="fade-up" data-aos-delay="150"></div>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">From our office to events and client
+        celebrations — a window into the POORNAYU world.</p>
     </div>
   </section>
 
-  <footer>
-    &copy; 2025 POORNAYU: An Investment Hub. All rights reserved.
-  </footer>
+  <!-- GALLERY -->
+  <section class="section-pad bg-pattern">
+    <div class="container">
+      <div class="gal-tabs" data-aos="fade-up">
+        <button class="gal-tab active" data-gfilter="all">All</button>
+        <button class="gal-tab" data-gfilter="office"><i class="fas fa-building"></i> Office</button>
+        <button class="gal-tab" data-gfilter="events"><i class="fas fa-calendar-star"></i> Events</button>
+        <button class="gal-tab" data-gfilter="clients"><i class="fas fa-users"></i> Clients</button>
+      </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+      <div class="gal-grid" id="galGrid">
+
+        <!-- gallery1 — WIDE (2 cols) top-left featured -->
+        <div class="gal-item wide" data-gcat="office" data-title="POORNAYU Investment Hub — Our Office"
+          data-img="gallery1.png"
+          data-desc="A glimpse of our premium office space at Sanganer, Jaipur — where every client consultation is held with warmth, privacy, and professionalism."
+          data-aos="fade-up" data-aos-delay="80">
+          <div class="gal-photo" style="background-image:url('gallery1.png')"></div>
+          <div class="gal-grad"></div>
+          <div class="gal-badge">Office</div>
+          <div class="gal-expand"><i class="fas fa-expand-alt"></i></div>
+          <div class="gal-caption">
+            <div class="gal-caption-title">POORNAYU Investment Hub</div>
+            <div class="gal-caption-sub"><i class="fas fa-map-marker-alt" style="margin-right:5px"></i>The Royal Avenue,
+              Sanganer, Jaipur</div>
+          </div>
+        </div>
+
+        <!-- gallery2 — TALL (2 rows) right column -->
+        <div class="gal-item tall" data-gcat="events" data-title="Financial Awareness Session" data-img="gallery2.png"
+          data-desc="One of our popular financial awareness sessions — educating clients on Post Office Schemes, LIC plans, and smart investment strategies for a secure future."
+          data-aos="fade-up" data-aos-delay="120">
+          <div class="gal-photo" style="background-image:url('gallery2.png')"></div>
+          <div class="gal-grad"></div>
+          <div class="gal-badge">Event</div>
+          <div class="gal-expand"><i class="fas fa-expand-alt"></i></div>
+          <div class="gal-caption">
+            <div class="gal-caption-title">Financial Awareness Event</div>
+            <div class="gal-caption-sub"><i class="fas fa-users" style="margin-right:5px"></i>Educating Jaipur's
+              investors</div>
+          </div>
+        </div>
+
+        <!-- gallery3 — Normal (1×1) -->
+        <div class="gal-item" data-gcat="clients" data-title="Client Advisory Session" data-img="gallery3.png"
+          data-desc="One-on-one advisory sessions — personalised, confidential, and focused entirely on each client's financial goals and future security."
+          data-aos="fade-up" data-aos-delay="100">
+          <div class="gal-photo" style="background-image:url('gallery3.png')"></div>
+          <div class="gal-grad"></div>
+          <div class="gal-badge">Client</div>
+          <div class="gal-expand"><i class="fas fa-expand-alt"></i></div>
+          <div class="gal-caption">
+            <div class="gal-caption-title">Client Consultation</div>
+            <div class="gal-caption-sub"><i class="fas fa-star" style="margin-right:5px"></i>Personalised wealth
+              planning</div>
+          </div>
+        </div>
+
+        <!-- gallery4 — WIDE (2 cols) bottom -->
+        <div class="gal-item wide" data-gcat="clients" data-title="Our Happy Clients — The POORNAYU Family"
+          data-img="gallery4.png"
+          data-desc="Our clients are our biggest pride. These are the faces behind 5,000+ success stories built through trust, discipline, and expert guidance at POORNAYU."
+          data-aos="fade-up" data-aos-delay="80">
+          <div class="gal-photo" style="background-image:url('gallery4.png')"></div>
+          <div class="gal-grad"></div>
+          <div class="gal-badge">Clients</div>
+          <div class="gal-expand"><i class="fas fa-expand-alt"></i></div>
+          <div class="gal-caption">
+            <div class="gal-caption-title">Our Happy Client Family</div>
+            <div class="gal-caption-sub"><i class="fas fa-heart" style="margin-right:5px"></i>5,000+ families, one
+              trusted advisor</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section-pad" style="background:var(--navy-2);text-align:center">
+    <div class="container" data-aos="fade-up">
+      <div class="section-tag">Come Visit Us</div>
+      <h2 class="section-title">We'd Love to <span>Meet You</span></h2>
+      <div class="gold-divider"></div>
+      <p class="section-subtitle">Visit our Sanganer office or book a virtual consultation — we're here for you.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px">
+        <a href="contact.html" class="btn btn-gold"><i class="fas fa-map-marker-alt"></i>Find Our Office</a>
+        <a href="https://wa.me/919414042187" class="btn btn-outline" target="_blank"><i class="fab fa-whatsapp"></i>Chat
+          on WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="if(event.target.id==='lightbox')closeLightbox()">
+    <div class="lb-wrap">
+      <div class="lb-close" onclick="closeLightbox()"><i class="fas fa-times"></i></div>
+      <div class="lb-img" id="lb-img"></div>
+      <div class="lb-body">
+        <div class="lb-title" id="lb-title"></div>
+        <div class="lb-desc" id="lb-desc"></div>
+        <a href="contact.html" class="btn btn-gold"><i class="fas fa-calendar-check"></i>Book a Consultation</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><img src="logo.jpg" alt="POORNAYU Logo">
+          <p>Jaipur's most trusted investment consulting hub. Empowering financial growth through expert guidance since
+            2010.</p>
+          <div class="footer-social"><a href="https://wa.me/919414042187" target="_blank"><i
+                class="fab fa-whatsapp"></i></a><a href="https://www.instagram.com/bhageshbilala" target="_blank"><i
+                class="fab fa-instagram"></i></a><a href="https://x.com/bhagesh_13" target="_blank"><i
+                class="fab fa-x-twitter"></i></a></div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4><a href="index.html">Home</a><a href="services.html">Services</a><a
+            href="philosophy.html">Philosophy</a><a href="news.html">News</a><a href="gallery.html">Gallery</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4><a href="services.html">Post Office Schemes</a><a href="services.html">Mediclaim
+            Policies</a><a href="services.html">Life Insurance</a><a href="services.html">Real Estate</a><a
+            href="services.html">Alternative Investments</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4><a href="tel:8005561306"><i class="fas fa-phone-alt"
+              style="margin-right:8px;color:var(--gold)"></i>80055 61306</a><a href="https://wa.me/919414042187"><i
+              class="fab fa-whatsapp" style="margin-right:8px;color:var(--gold)"></i>9414042187</a><a
+            href="mailto:poornayuhub@gmail.com"><i class="fas fa-envelope"
+              style="margin-right:8px;color:var(--gold)"></i>poornayuhub@gmail.com</a><a href="#"><i
+              class="fas fa-map-marker-alt" style="margin-right:8px;color:var(--gold)"></i>Sanganer, Jaipur, RJ</a>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2025 <span>POORNAYU: An Investment Hub</span>. All rights reserved.</div>
+    </div>
+  </footer>
+  <a href="https://wa.me/919414042187" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900, once: true, offset: 80 });
+    window.addEventListener('scroll', function () { document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60); });
+
+    // Filter tabs
+    document.querySelectorAll('.gal-tab').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.gal-tab').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var f = btn.dataset.gfilter;
+        document.querySelectorAll('.gal-item').forEach(function (item) {
+          item.classList.toggle('hidden', f !== 'all' && item.dataset.gcat !== f);
+        });
+      });
+    });
+
+    // Lightbox
+    document.querySelectorAll('.gal-item').forEach(function (item) {
+      item.addEventListener('click', function () {
+        document.getElementById('lb-title').textContent = item.dataset.title || '';
+        document.getElementById('lb-desc').textContent = item.dataset.desc || '';
+        document.getElementById('lb-img').style.backgroundImage = "url('" + item.dataset.img + "')";
+        document.getElementById('lightbox').classList.add('open');
+      });
+    });
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="mobile-sticky-cta">
+    <a href="tel:+918005561306" class="cta-call"><i class="fas fa-phone-alt"></i>Call Now</a>
+    <a href="https://wa.me/919414042187" class="cta-wa" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+  </div>
+
+  <script>
+    // Back to top
+    var btt = document.getElementById('backToTop');
+    if(btt){
+      window.addEventListener('scroll', function(){
+        btt.classList.toggle('visible', window.scrollY > 300);
+      });
+      btt.addEventListener('click', function(){
+        window.scrollTo({top:0, behavior:'smooth'});
+      });
+    }
+    // Hamburger X toggle
+    var ham = document.querySelector('.nav-hamburger');
+    var navLinks = document.getElementById('nav-links');
+    if(ham && navLinks){
+      ham.addEventListener('click', function(){
+        ham.classList.toggle('open');
+      });
+    }
+  </script>
 </body>
+
 </html>
