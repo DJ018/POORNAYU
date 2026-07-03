@@ -1,171 +1,786 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Testimonials - POORNAYU</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Client testimonials for POORNAYU Investment Hub — hear what our 5,000+ satisfied clients say about us.">
+  <title>Testimonials – POORNAYU Investment Hub</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", sans-serif;
-      background: #f9fcff;
-      color: #002244;
-    }
-
-    .logo-container {
+    .testi-hero {
+      min-height: 52vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 40px 0 10px 0;
-    }
-
-    .logo-container img {
-      width: 220px;
-      height: auto;
-    }
-
-    header nav {
-      background: #002244;
-      text-align: center;
-      padding: 15px 0;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-      font-size: 16px;
-    }
-
-    .testimonials-section {
-      padding: 80px 20px;
-      background: #f0f8ff;
-      text-align: center;
-    }
-
-    .testimonials-section h2 {
-      font-size: 38px;
-      margin-bottom: 40px;
-      color: #003366;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    .testimonial-wrapper {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .testimonial-card {
-      background: white;
-      border-radius: 10px;
-      padding: 30px 20px;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
       position: relative;
-      animation: slideUp 1s ease forwards;
-      opacity: 0;
+      background: linear-gradient(135deg, #020a18, #041530);
+      overflow: hidden;
+      padding: 120px 0 80px
     }
 
-    .testimonial-card:nth-child(1) { animation-delay: 0.2s; }
-    .testimonial-card:nth-child(2) { animation-delay: 0.4s; }
-    .testimonial-card:nth-child(3) { animation-delay: 0.6s; }
-    .testimonial-card:nth-child(4) { animation-delay: 0.8s; }
-
-    .testimonial-card p {
-      font-size: 16px;
-      font-style: italic;
-      color: #333;
-      margin-bottom: 15px;
+    .testi-hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(90px);
+      opacity: .12;
+      pointer-events: none
     }
 
-    .testimonial-card .stars {
-      font-size: 18px;
-      color: #ffcc00;
-      margin-bottom: 10px;
+    .testi-hero-orb-1 {
+      width: 500px;
+      height: 500px;
+      background: var(--gold);
+      top: -150px;
+      right: -80px;
+      animation: orbF 13s ease-in-out infinite
     }
 
-    .testimonial-card h4 {
-      font-size: 16px;
-      color: #004080;
+    .testi-hero-orb-2 {
+      width: 350px;
+      height: 350px;
+      background: #1a4a8f;
+      bottom: -80px;
+      left: -60px;
+      animation: orbF 17s ease-in-out infinite reverse
     }
 
-    @keyframes slideUp {
-      from {
-        transform: translateY(40px);
-        opacity: 0;
+    @keyframes orbF {
+
+      0%,
+      100% {
+        transform: translateY(0)
       }
-      to {
-        transform: translateY(0);
-        opacity: 1;
+
+      50% {
+        transform: translateY(-24px)
       }
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    /* RATING STRIP */
+    .rating-strip {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 60px;
+      flex-wrap: wrap
     }
 
-    footer {
-      background: #002244;
-      color: white;
-      text-align: center;
-      padding: 16px;
-      margin-top: 50px;
+    .rating-chip {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(201, 162, 39, .18);
+      border-radius: 50px;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: var(--transition)
+    }
+
+    .rating-chip:hover {
+      border-color: rgba(201, 162, 39, .4);
+      transform: translateY(-3px)
+    }
+
+    .rating-chip .stars {
+      color: var(--gold);
       font-size: 14px;
+      letter-spacing: 2px
+    }
+
+    .rating-chip .label {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500
+    }
+
+    .rating-chip .score {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--gold)
+    }
+
+    /* TESTIMONIAL CARDS */
+    .testi-masonry {
+      columns: 3;
+      column-gap: 24px
+    }
+
+    .testi-card {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(201, 162, 39, .15);
+      border-radius: 18px;
+      padding: 28px;
+      margin-bottom: 24px;
+      break-inside: avoid;
+      transition: var(--transition);
+      position: relative
+    }
+
+    .testi-card::before {
+      content: '\201C';
+      font-family: 'Playfair Display', serif;
+      font-size: 80px;
+      color: rgba(201, 162, 39, .1);
+      position: absolute;
+      top: 8px;
+      left: 16px;
+      line-height: 1
+    }
+
+    .testi-card:hover {
+      border-color: rgba(201, 162, 39, .4);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, .25)
+    }
+
+    .testi-stars {
+      color: var(--gold);
+      font-size: 13px;
+      letter-spacing: 2px;
+      margin-bottom: 14px
+    }
+
+    .testi-text {
+      font-size: 14px;
+      color: rgba(255, 255, 255, .75);
+      line-height: 1.8;
+      margin-bottom: 20px;
+      padding-top: 12px;
+      font-style: italic
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .testi-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      flex-shrink: 0
+    }
+
+    .testi-name {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--white)
+    }
+
+    .testi-detail {
+      font-size: 12px;
+      color: var(--text-muted)margin-top:2px
+    }
+
+    .testi-service-tag {
+      display: inline-block;
+      background: rgba(201, 162, 39, .1);
+      border: 1px solid rgba(201, 162, 39, .2);
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-top: 6px;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: .5px
+    }
+
+    /* HIGHLIGHT STAT */
+    .stats-banner {
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+      padding: 60px 0
+    }
+
+    .stats-banner-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0
+    }
+
+    .stats-banner-item {
+      text-align: center;
+      padding: 20px;
+      border-right: 1px solid rgba(2, 10, 24, .15)
+    }
+
+    .stats-banner-item:last-child {
+      border-right: none
+    }
+
+    .stats-banner-item .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 900;
+      color: var(--navy)
+    }
+
+    .stats-banner-item .lbl {
+      font-size: 13px;
+      color: rgba(2, 10, 24, .7);
+      font-weight: 500;
+      margin-top: 4px
+    }
+
+    @media(max-width:1024px) {
+      .testi-masonry {
+        columns: 2
+      }
+    }
+
+    @media(max-width:768px) {
+      .testi-masonry {
+        columns: 1
+      }
+
+      .stats-banner-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(max-width:480px) {
+      .stats-banner-grid {
+        grid-template-columns: 1fr 1fr
+      }
     }
   </style>
 </head>
+
 <body>
-
-  <div class="logo-container">
-    <img src="logo.jpg" alt="POORNAYU Logo" />
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-social"><a href="https://wa.me/919414042187" target="_blank" class="wa"><i
+            class="fab fa-whatsapp"></i></a><a href="https://www.instagram.com/bhageshbilala" target="_blank"
+          class="ig"><i class="fab fa-instagram"></i></a><a href="https://x.com/bhagesh_13" target="_blank"
+          class="tw"><i class="fab fa-x-twitter"></i></a></div>
+      <div class="top-contact"><a href="tel:+918005561306"><i class="fas fa-phone-alt"></i>+91 80055 61306</a><a
+          href="mailto:poornayuhub@gmail.com"><i class="fas fa-envelope"></i>poornayuhub@gmail.com</a></div>
+    </div>
   </div>
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="logo.jpg" alt="POORNAYU"></a>
+      <div class="nav-links" id="nav-links"><a href="index.html">Home</a><a href="services.html">Services</a><a
+          href="philosophy.html">Philosophy</a><a href="news.html">News</a><a href="testimonials.html"
+          class="active">Testimonials</a><a href="faqs.html">FAQs</a><a
+          href="gallery.html">Gallery</a><a href="contact.html" class="nav-cta">Contact Us</a></div>
+      <div class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span></div>
+    </div>
+  </nav>
 
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="philosophy.html">Philosophy</a>
-      <a href="team.html">Team</a>
-      <a href="testimonials.html">Testimonials</a>
-      <a href="faqs.html">FAQs</a>
-      <a href="why.html">Why Us</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+  <!-- HERO -->
+  <section class="testi-hero">
+    <div class="testi-hero-orb testi-hero-orb-1"></div>
+    <div class="testi-hero-orb testi-hero-orb-2"></div>
+    <div
+      style="position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,39,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,39,.04) 1px,transparent 1px);background-size:60px 60px">
+    </div>
+    <div class="container" style="position:relative;z-index:2">
+      <div class="section-tag" data-aos="fade-up">Real Stories, Real Results</div>
+      <h1 class="section-title" style="font-size:clamp(36px,5vw,66px)" data-aos="fade-up" data-aos-delay="100">What Our
+        <span>Clients Say</span></h1>
+      <div class="gold-divider" data-aos="fade-up" data-aos-delay="150"></div>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Over 5,000 families trust POORNAYU with their
+        financial future. Here's what some of them have to share.</p>
+    </div>
+  </section>
 
-  <section class="testimonials-section">
-    <h2>What Our Clients Say</h2>
-    <div class="testimonial-wrapper">
-      <div class="testimonial-card">
-        <p>“POORNAYU gave me peace of mind with a diversified investment plan that actually works!”</p>
-        <div class="stars">★★★★★</div>
-        <h4>– Uday.V</h4>
-      </div>
-      <div class="testimonial-card">
-        <p>“I was new to investing, but Bhagesh explained everything clearly. Now I feel confident.”</p>
-        <div class="stars">★★★★★</div>
-        <h4>– K.L Jain</h4>
-      </div>
-      <div class="testimonial-card">
-        <p>“Their insurance recommendations were perfect for my needs. Highly transparent and honest.”</p>
-        <div class="stars">★★★★☆</div>
-        <h4>– Rujhan.S</h4>
-      </div>
-      <div class="testimonial-card">
-        <p>“Professional team, prompt service, and reliable advice. I recommend POORNAYU to all.”</p>
-        <div class="stars">★★★★★</div>
-        <h4>– Vansh.N</h4>
+  <!-- RATING STRIP -->
+  <section style="padding:48px 0;background:var(--navy-2)">
+    <div class="container">
+      <div class="rating-strip" data-aos="fade-up">
+        <div class="rating-chip">
+          <div class="score">4.9</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="label">Google Rating</div>
+          </div>
+        </div>
+        <div class="rating-chip">
+          <div class="score">5K+</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="label">Happy Clients</div>
+          </div>
+        </div>
+        <div class="rating-chip">
+          <div class="score">100%</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="label">Satisfaction Rate</div>
+          </div>
+        </div>
+        <div class="rating-chip">
+          <div class="score">20+</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="label">Years Trusted</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer>
-    &copy; 2025 POORNAYU: An Investment Hub. All rights reserved.
-  </footer>
+  <!-- TESTIMONIALS MASONRY -->
+  <section class="section-pad bg-pattern">
+    <div class="container">
+      <div class="testi-masonry">
 
+        <div class="testi-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Bhagesh ji helped me open a PPF account for my daughter's education. The entire process
+            was handled by POORNAYU — I just had to sign the papers. 8 years in, I'm very happy with the returns!</p>
+          <div class="testi-author">
+            <div class="testi-avatar">R</div>
+            <div>
+              <div class="testi-name">Ramesh Gupta</div>
+              <div class="testi-detail">Retired Government Employee, Jaipur</div>
+              <div class="testi-service-tag">Post Office Schemes</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">When my husband had bypass surgery, POORNAYU helped us with the entire insurance claim
+            process. We got ₹4.8 lakh cashless. I don't know what we would have done without their support.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">S</div>
+            <div>
+              <div class="testi-name">Savita Sharma</div>
+              <div class="testi-detail">Homemaker, Sanganer</div>
+              <div class="testi-service-tag">Mediclaim</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">I was confused about real estate vs mutual funds for my retirement corpus. The team
+            spent nearly 2 hours with me, explained everything clearly, and created a blended plan. Absolutely top-class
+            advisory.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">V</div>
+            <div>
+              <div class="testi-name">Vikas Agarwal</div>
+              <div class="testi-detail">Business Owner, Jaipur</div>
+              <div class="testi-service-tag">Investment Advisory</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Got my car and two-wheeler insurance renewed through POORNAYU. They also reminded me
+            about the renewal before the due date, saving my NCB. Excellent proactive service!</p>
+          <div class="testi-author">
+            <div class="testi-avatar">A</div>
+            <div>
+              <div class="testi-name">Ajay Meena</div>
+              <div class="testi-detail">Software Engineer, Jaipur</div>
+              <div class="testi-service-tag">Vehicle Insurance</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">My family has been with POORNAYU for 12 years. Started with one PPF account, now have
+            PPF, SSY for my daughter, life insurance, and mediclaim — all managed by Bhagesh ji's team. Truly a one-stop
+            solution.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">P</div>
+            <div>
+              <div class="testi-name">Pradeep Singhvi</div>
+              <div class="testi-detail">Teacher, Sanganer</div>
+              <div class="testi-service-tag">Multiple Services</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Invested in a commercial property in Jaipur based on POORNAYU's advisory. The ROI has
+            been excellent — over 14% annual returns. Their market knowledge is unmatched in the region.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">M</div>
+            <div>
+              <div class="testi-name">Manoj Jain</div>
+              <div class="testi-detail">Entrepreneur, Jaipur</div>
+    }
+
+    .stats-banner-item .lbl {
+      font-size: 13px;
+      color: rgba(2, 10, 24, .7);
+      font-weight: 500;
+      margin-top: 4px
+    }
+
+    @media(max-width:1024px) {
+      .testi-masonry {
+        columns: 2
+      }
+    }
+
+    @media(max-width:768px) {
+      .testi-masonry {
+        columns: 1
+      }
+
+      .stats-banner-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(max-width:480px) {
+      .stats-banner-grid {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-social"><a href="https://wa.me/919414042187" target="_blank" class="wa"><i
+            class="fab fa-whatsapp"></i></a><a href="https://www.instagram.com/bhageshbilala" target="_blank"
+          class="ig"><i class="fab fa-instagram"></i></a><a href="https://x.com/bhagesh_13" target="_blank"
+          class="tw"><i class="fab fa-x-twitter"></i></a></div>
+      <div class="top-contact"><a href="tel:+918005561306"><i class="fas fa-phone-alt"></i>+91 80055 61306</a><a
+          href="mailto:poornayuhub@gmail.com"><i class="fas fa-envelope"></i>poornayuhub@gmail.com</a></div>
+    </div>
+  </div>
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="logo.jpg" alt="POORNAYU"></a>
+      <div class="nav-links" id="nav-links"><a href="index.html">Home</a><a href="services.html">Services</a><a
+          href="philosophy.html">Philosophy</a><a href="news.html">News</a><a href="testimonials.html"
+          class="active">Testimonials</a><a href="faqs.html">FAQs</a><a
+          href="gallery.html">Gallery</a><a href="contact.html" class="nav-cta">Contact Us</a></div>
+      <div class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span></div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="testi-hero">
+    <div class="testi-hero-orb testi-hero-orb-1"></div>
+    <div class="testi-hero-orb testi-hero-orb-2"></div>
+    <div
+      style="position:absolute;inset:0;background-image:linear-gradient(rgba(201,162,39,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,162,39,.04) 1px,transparent 1px);background-size:60px 60px">
+    </div>
+    <div class="container" style="position:relative;z-index:2">
+      <div class="section-tag" data-aos="fade-up">Real Stories, Real Results</div>
+      <h1 class="section-title" style="font-size:clamp(36px,5vw,66px)" data-aos="fade-up" data-aos-delay="100">What Our
+        <span>Clients Say</span></h1>
+      <div class="gold-divider" data-aos="fade-up" data-aos-delay="150"></div>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Over 5,000 families trust POORNAYU with their
+        financial future. Here's what some of them have to share.</p>
+    </div>
+  </section>
+
+  <!-- RATING STRIP -->
+  <section style="padding:48px 0;background:var(--navy-2)">
+    <div class="container">
+      <div class="rating-strip" data-aos="fade-up">
+        <div class="rating-chip">
+          <div class="score">4.9</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="label">Google Rating</div>
+          </div>
+        </div>
+        <div class="rating-chip">
+          <div class="score">5K+</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="label">Happy Clients</div>
+          </div>
+        </div>
+        <div class="rating-chip">
+          <div class="score">100%</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="label">Satisfaction Rate</div>
+          </div>
+        </div>
+        <div class="rating-chip">
+          <div class="score">20+</div>
+          <div>
+            <div class="stars">★★★★★</div>
+            <div class="label">Years Trusted</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS MASONRY -->
+  <section class="section-pad bg-pattern">
+    <div class="container">
+      <div class="testi-masonry">
+
+        <div class="testi-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Bhagesh ji helped me open a PPF account for my daughter's education. The entire process
+            was handled by POORNAYU — I just had to sign the papers. 8 years in, I'm very happy with the returns!</p>
+          <div class="testi-author">
+            <div class="testi-avatar">R</div>
+            <div>
+              <div class="testi-name">Ramesh Gupta</div>
+              <div class="testi-detail">Retired Government Employee, Jaipur</div>
+              <div class="testi-service-tag">Post Office Schemes</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">When my husband had bypass surgery, POORNAYU helped us with the entire insurance claim
+            process. We got ₹4.8 lakh cashless. I don't know what we would have done without their support.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">S</div>
+            <div>
+              <div class="testi-name">Savita Sharma</div>
+              <div class="testi-detail">Homemaker, Sanganer</div>
+              <div class="testi-service-tag">Mediclaim</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">I was confused about real estate vs mutual funds for my retirement corpus. The team
+            spent nearly 2 hours with me, explained everything clearly, and created a blended plan. Absolutely top-class
+            advisory.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">V</div>
+            <div>
+              <div class="testi-name">Vikas Agarwal</div>
+              <div class="testi-detail">Business Owner, Jaipur</div>
+              <div class="testi-service-tag">Investment Advisory</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Got my car and two-wheeler insurance renewed through POORNAYU. They also reminded me
+            about the renewal before the due date, saving my NCB. Excellent proactive service!</p>
+          <div class="testi-author">
+            <div class="testi-avatar">A</div>
+            <div>
+              <div class="testi-name">Ajay Meena</div>
+              <div class="testi-detail">Software Engineer, Jaipur</div>
+              <div class="testi-service-tag">Vehicle Insurance</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">My family has been with POORNAYU for 12 years. Started with one PPF account, now have
+            PPF, SSY for my daughter, life insurance, and mediclaim — all managed by Bhagesh ji's team. Truly a one-stop
+            solution.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">P</div>
+            <div>
+              <div class="testi-name">Pradeep Singhvi</div>
+              <div class="testi-detail">Teacher, Sanganer</div>
+              <div class="testi-service-tag">Multiple Services</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Invested in a commercial property in Jaipur based on POORNAYU's advisory. The ROI has
+            been excellent — over 14% annual returns. Their market knowledge is unmatched in the region.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">M</div>
+            <div>
+              <div class="testi-name">Manoj Jain</div>
+              <div class="testi-detail">Entrepreneur, Jaipur</div>
+              <div class="testi-service-tag">Real Estate</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">The Sukanya Samriddhi Yojana for my granddaughter was opened with POORNAYU's help. They
+            explained all the tax benefits and future value. Such patient, helpful advisors. May God bless them!</p>
+          <div class="testi-author">
+            <div class="testi-avatar">K</div>
+            <div>
+              <div class="testi-name">Kamla Devi</div>
+              <div class="testi-detail">Senior Citizen, Sanganer</div>
+              <div class="testi-service-tag">Post Office Schemes</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Got a ₹1 crore term life insurance with POORNAYU's recommendation at a very affordable
+            premium. They compared 8 companies for me. I feel my family is now truly protected. Very professional team.
+          </p>
+          <div class="testi-author">
+            <div class="testi-avatar">N</div>
+            <div>
+              <div class="testi-name">Naresh Kumar</div>
+              <div class="testi-detail">Bank Employee, Jaipur</div>
+              <div class="testi-service-tag">Life Insurance</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">POORNAYU handled our company's entire ad campaign across 3 newspapers and digital
+            platforms. The exposure was tremendous and inquiries went up by 40%. Excellent media knowledge and very
+            reasonable rates.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">D</div>
+            <div>
+              <div class="testi-name">Deepak Bansal</div>
+              <div class="testi-detail">Retail Business Owner, Jaipur</div>
+              <div class="testi-service-tag">Media & Advertising</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BANNER -->
+  <div class="stats-banner" data-aos="fade-up">
+    <div class="container">
+      <div class="stats-banner-grid">
+        <div class="stats-banner-item">
+          <div class="num">5,000+</div>
+          <div class="lbl">Happy Clients</div>
+        </div>
+        <div class="stats-banner-item">
+          <div class="num">4.9/5</div>
+          <div class="lbl">Average Rating</div>
+        </div>
+        <div class="stats-banner-item">
+          <div class="num">100%</div>
+          <div class="lbl">Would Recommend</div>
+        </div>
+        <div class="stats-banner-item">
+          <div class="num">20+</div>
+          <div class="lbl">Years of Trust</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="section-pad" style="background:var(--navy-2);text-align:center">
+    <div class="container" data-aos="fade-up">
+      <div class="section-tag">Join Our Client Family</div>
+      <h2 class="section-title">Ready to Write <span>Your Success Story?</span></h2>
+      <div class="gold-divider"></div>
+      <p class="section-subtitle">Book a free consultation and let POORNAYU design your personalised wealth roadmap.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:12px">
+        <a href="contact.html" class="btn btn-gold"><i class="fas fa-calendar-check"></i>Book Free Consultation</a>
+        <a href="https://wa.me/919414042187" class="btn btn-outline" target="_blank"><i
+            class="fab fa-whatsapp"></i>WhatsApp Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><img src="logo.jpg" alt="POORNAYU Logo">
+          <p>Jaipur's most trusted investment consulting hub. Empowering financial growth through expert guidance since
+            2010.</p>
+          <div class="footer-social"><a href="https://wa.me/919414042187" target="_blank"><i
+                class="fab fa-whatsapp"></i></a><a href="https://www.instagram.com/bhageshbilala" target="_blank"><i
+                class="fab fa-instagram"></i></a><a href="https://x.com/bhagesh_13" target="_blank"><i
+                class="fab fa-x-twitter"></i></a></div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4><a href="index.html">Home</a><a href="services.html">Services</a><a
+            href="philosophy.html">Philosophy</a><a href="news.html">News</a><a href="gallery.html">Gallery</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4><a href="services.html">Post Office Schemes</a><a href="services.html">Mediclaim
+            Policies</a><a href="services.html">Life Insurance</a><a href="services.html">Real Estate</a><a
+            href="services.html">Alternative Investments</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4><a href="tel:8005561306"><i class="fas fa-phone-alt"
+              style="margin-right:8px;color:var(--gold)"></i>80055 61306</a><a href="https://wa.me/919414042187"><i
+              class="fab fa-whatsapp" style="margin-right:8px;color:var(--gold)"></i>9414042187</a><a
+            href="mailto:poornayuhub@gmail.com"><i class="fas fa-envelope"
+              style="margin-right:8px;color:var(--gold)"></i>poornayuhub@gmail.com</a><a href="#"><i
+              class="fas fa-map-marker-alt" style="margin-right:8px;color:var(--gold)"></i>Sanganer, Jaipur, RJ</a>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2025 <span>POORNAYU: An Investment Hub</span>. All rights reserved.</div>
+    </div>
+  </footer>
+  <a href="https://wa.me/919414042187" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 900, once: true, offset: 80 }); window.addEventListener('scroll', function () { document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60); });</script>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="mobile-sticky-cta">
+    <a href="tel:+918005561306" class="cta-call"><i class="fas fa-phone-alt"></i>Call Now</a>
+    <a href="https://wa.me/919414042187" class="cta-wa" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+  </div>
+
+  <script>
+    // Back to top
+    var btt = document.getElementById('backToTop');
+    if (btt) {
+      window.addEventListener('scroll', function () {
+        btt.classList.toggle('visible', window.scrollY > 300);
+      });
+      btt.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+    // Hamburger X toggle
+    var ham = document.querySelector('.nav-hamburger');
+    var navLinks = document.getElementById('nav-links');
+    if (ham && navLinks) {
+      ham.addEventListener('click', function () {
+        ham.classList.toggle('open');
+      });
+    }
+  </script>
 </body>
+
 </html>
