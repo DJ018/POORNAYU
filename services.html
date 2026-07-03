@@ -1,166 +1,1327 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Core Services - POORNAYU</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <meta name="description"
+    content="Explore POORNAYU's investment and insurance services — Post Office Schemes, Mediclaim, Real Estate, Insurance & more in Jaipur.">
+  <title>Our Services – POORNAYU Investment Hub</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+  <link rel="stylesheet" href="style.css">
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f4f9ff;
-      color: #002244;
-    }
-
-    .logo-container {
+    /* ── HERO ── */
+    .svc-hero {
+      min-height: 56vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 40px 0 10px 0;
+      position: relative;
+      background: linear-gradient(135deg, #020a18 0%, #041530 50%, #020a18 100%);
+      overflow: hidden;
+      padding: 120px 0 80px
     }
 
-    .logo-container img {
-      width: 220px;
-      height: auto;
+    .svc-hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: .13;
+      pointer-events: none
     }
 
-    header nav {
-      background: #002244;
-      text-align: center;
-      padding: 15px 0;
+    .svc-hero-orb-1 {
+      width: 600px;
+      height: 600px;
+      background: var(--gold);
+      top: -200px;
+      left: -150px;
+      animation: orbFloat 10s ease-in-out infinite
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-      font-size: 16px;
+    .svc-hero-orb-2 {
+      width: 400px;
+      height: 400px;
+      background: #1a4a8f;
+      bottom: -100px;
+      right: -80px;
+      animation: orbFloat 14s ease-in-out infinite reverse
     }
 
-    .services {
-      padding: 80px 20px;
-      background: #f4f9ff;
-      text-align: center;
+    @keyframes orbFloat {
+
+      0%,
+      100% {
+        transform: translateY(0) scale(1)
+      }
+
+      50% {
+        transform: translateY(-30px) scale(1.06)
+      }
     }
 
-    .services h2 {
-      font-size: 40px;
-      margin-bottom: 40px;
-      color: #003366;
-      animation: fadeIn 1s ease-in-out;
+    .svc-hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(rgba(201, 162, 39, .04) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 162, 39, .04) 1px, transparent 1px);
+      background-size: 60px 60px
     }
 
-    .service-grid {
+    .svc-hero-content {
+      position: relative;
+      z-index: 2
+    }
+
+    .svc-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201, 162, 39, .1);
+      border: 1px solid rgba(201, 162, 39, .3);
+      border-radius: 50px;
+      padding: 8px 20px;
+      margin-bottom: 24px
+    }
+
+    .svc-hero-badge span {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 3px;
+      text-transform: uppercase
+    }
+
+    /* ── FILTER TABS ── */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 54px
+    }
+
+    .filter-tab {
+      padding: 10px 24px;
+      border-radius: 50px;
+      border: 1px solid rgba(201, 162, 39, .3);
+      background: transparent;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      letter-spacing: .5px
+    }
+
+    .filter-tab.active,
+    .filter-tab:hover {
+      background: var(--gold);
+      color: var(--navy);
+      border-color: var(--gold);
+      box-shadow: 0 4px 18px rgba(201, 162, 39, .35)
+    }
+
+    /* ── SERVICE CARDS (expandable) ── */
+    .svc-full-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 28px;
+      transition: all .4s
     }
 
-    .service-card {
-      background: white;
-      border-radius: 12px;
-      padding: 30px 20px;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+    .svc-card {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(201, 162, 39, .18);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: var(--transition);
+      position: relative
     }
 
-    .service-card:hover {
-      transform: translateY(-10px);
+    .svc-card[data-cat="savings"] {
+      --accent: #c9a227
     }
 
-    .service-card i {
-      font-size: 40px;
-      color: #0055aa;
-      margin-bottom: 20px;
+    .svc-card[data-cat="insurance"] {
+      --accent: #3b9ede
     }
 
-    .service-card h3 {
-      font-size: 22px;
-      margin-bottom: 15px;
-      color: #003366;
+    .svc-card[data-cat="investment"] {
+      --accent: #34d399
     }
 
-    .service-card p {
-      font-size: 15px;
-      line-height: 1.6;
+    .svc-card[data-cat="media"] {
+      --accent: #f59e0b
     }
 
-    footer {
-      background: #002244;
-      color: white;
-      text-align: center;
-      padding: 16px;
-      margin-top: 60px;
+    .svc-card-header {
+      padding: 32px 28px 24px;
+      cursor: pointer;
+      position: relative
+    }
+
+    .svc-card-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent, var(--gold)), transparent);
+      opacity: 0;
+      transition: opacity .3s
+    }
+
+    .svc-card.expanded .svc-card-header::before {
+      opacity: 1
+    }
+
+    .svc-card:hover {
+      border-color: rgba(201, 162, 39, .4);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .3)
+    }
+
+    .svc-card.hidden {
+      display: none
+    }
+
+    .svc-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px
+    }
+
+    .svc-icon2 {
+      width: 64px;
+      height: 64px;
+      background: rgba(201, 162, 39, .1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      color: var(--gold);
+      flex-shrink: 0;
+      transition: var(--transition)
+    }
+
+    .svc-card:hover .svc-icon2 {
+      background: var(--gold);
+      color: var(--navy);
+      transform: rotate(6deg) scale(1.06)
+    }
+
+    .svc-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      font-weight: 900;
+      color: rgba(201, 162, 39, .08);
+      line-height: 1
+    }
+
+    .svc-card-header h3 {
+      font-size: 23px;
+      margin: 16px 0 10px;
+      color: var(--white)
+    }
+
+    .svc-card-header p {
       font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .expand-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 18px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      padding: 0;
+      transition: gap .3s
+    }
+
+    .expand-btn i {
+      transition: transform .35s
+    }
+
+    .svc-card.expanded .expand-btn i {
+      transform: rotate(180deg)
+    }
+
+    .svc-expanded-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .5s cubic-bezier(.4, 0, .2, 1)
+    }
+
+    .svc-card.expanded .svc-expanded-body {
+      max-height: 600px
+    }
+
+    .svc-expanded-inner {
+      padding: 0 28px 28px
+    }
+
+    .svc-features {
+      margin-bottom: 20px
+    }
+
+    .svc-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, .65);
+      margin-bottom: 10px
+    }
+
+    .svc-features li i {
+      color: var(--gold);
+      margin-top: 2px;
+      flex-shrink: 0
+    }
+
+    .svc-divider {
+      height: 1px;
+      background: rgba(201, 162, 39, .12);
+      margin: 18px 0
+    }
+
+    /* ── INLINE CALCULATOR ── */
+    .calc-box {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(201, 162, 39, .15);
+      border-radius: 14px;
+      padding: 20px
+    }
+
+    .calc-box h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      font-family: 'Inter', sans-serif
+    }
+
+    .calc-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap
+    }
+
+    .calc-row label {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+      min-width: 100px
+    }
+
+    .calc-input {
+      flex: 1;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(201, 162, 39, .25);
+      border-radius: 8px;
+      padding: 9px 14px;
+      color: var(--white);
+      font-size: 14px;
+      outline: none;
+      transition: border-color .3s;
+      min-width: 100px
+    }
+
+    .calc-input:focus {
+      border-color: var(--gold)
+    }
+
+    .calc-result {
+      background: linear-gradient(135deg, rgba(201, 162, 39, .12), rgba(201, 162, 39, .06));
+      border: 1px solid rgba(201, 162, 39, .25);
+      border-radius: 10px;
+      padding: 14px 18px;
+      text-align: center;
+      margin-top: 12px
+    }
+
+    .calc-result .res-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px
+    }
+
+    .calc-result .res-val {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--gold);
+      margin-top: 4px
+    }
+
+    .calc-btn {
+      width: 100%;
+      padding: 10px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--navy);
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      margin-top: 12px;
+      transition: opacity .3s;
+      font-family: 'Inter', sans-serif
+    }
+
+    .calc-btn:hover {
+      opacity: .88
+    }
+
+    /* ── CTA CARD ── */
+    .consult-card {
+      background: rgba(201, 162, 39, .06);
+      border: 1px solid rgba(201, 162, 39, .2);
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px
+    }
+
+    .consult-card i {
+      color: var(--gold);
+      font-size: 18px
+    }
+
+    .consult-card span {
+      font-size: 13px;
+      color: rgba(255, 255, 255, .75);
+      flex: 1
+    }
+
+    .consult-card a {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gold);
+      white-space: nowrap
+    }
+
+    /* ── PROCESS TIMELINE ── */
+    .process-section {
+      background: var(--navy-2);
+      border-top: 1px solid rgba(201, 162, 39, .1);
+      border-bottom: 1px solid rgba(201, 162, 39, .1)
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 60px auto 0
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--gold-dark), var(--gold-light));
+      transform: translateX(-50%)
+    }
+
+    .tl-item {
+      display: flex;
+      gap: 48px;
+      align-items: flex-start;
+      margin-bottom: 60px;
+      position: relative
+    }
+
+    .tl-item:nth-child(even) {
+      flex-direction: row-reverse
+    }
+
+    .tl-item:nth-child(even) .tl-content {
+      text-align: right
+    }
+
+    .tl-node {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--navy);
+      box-shadow: 0 0 0 8px rgba(201, 162, 39, .15), 0 8px 24px rgba(201, 162, 39, .4);
+      z-index: 2;
+      flex-shrink: 0
+    }
+
+    .tl-content {
+      flex: 1;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid rgba(201, 162, 39, .18);
+      border-radius: 16px;
+      padding: 26px 28px;
+      transition: var(--transition)
+    }
+
+    .tl-content:hover {
+      border-color: rgba(201, 162, 39, .4);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, .25);
+      transform: translateY(-4px)
+    }
+
+    .tl-tag {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      font-family: 'Inter', sans-serif
+    }
+
+    .tl-content h4 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: var(--white)
+    }
+
+    .tl-content p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7
+    }
+
+    @media(max-width:768px) {
+      .timeline::before {
+        left: 28px
+      }
+
+      .tl-item,
+      .tl-item:nth-child(even) {
+        flex-direction: column;
+        gap: 0
+      }
+
+      .tl-item:nth-child(even) .tl-content {
+        text-align: left
+      }
+
+      .tl-node {
+        position: relative;
+        left: auto;
+        transform: none;
+        margin-bottom: 16px
+      }
+    }
+
+    /* ── COMPARISON TABLE ── */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 40px
+    }
+
+    .compare-table th,
+    .compare-table td {
+      padding: 14px 18px;
+      text-align: left;
+      border-bottom: 1px solid rgba(201, 162, 39, .1);
+      font-size: 14px
+    }
+
+    .compare-table th {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: rgba(201, 162, 39, .06);
+      font-family: 'Inter', sans-serif
+    }
+
+    .compare-table td {
+      color: var(--text-muted)
+    }
+
+    .compare-table td:first-child {
+      color: var(--white);
+      font-weight: 500
+    }
+
+    .compare-table tr:hover td {
+      background: rgba(201, 162, 39, .04)
+    }
+
+    .badge-good {
+      background: rgba(52, 211, 153, .15);
+      color: #34d399;
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 700
+    }
+
+    .badge-med {
+      background: rgba(251, 191, 36, .15);
+      color: #fbbf24;
+      border-radius: 20px;
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 700
+    }
+
+    /* ── FAQ ACCORDION ── */
+    .faq-list {
+      max-width: 780px;
+      margin: 0 auto
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(201, 162, 39, .1);
+      overflow: hidden
+    }
+
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--white);
+      transition: color .3s;
+      gap: 16px
+    }
+
+    .faq-q:hover {
+      color: var(--gold)
+    }
+
+    .faq-q i {
+      color: var(--gold);
+      font-size: 14px;
+      flex-shrink: 0;
+      transition: transform .35s
+    }
+
+    .faq-item.open .faq-q i {
+      transform: rotate(135deg)
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .45s cubic-bezier(.4, 0, .2, 1)
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 200px
+    }
+
+    .faq-a p {
+      padding: 0 0 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75
+    }
+
+    @media(max-width:768px) {
+      .svc-full-grid {
+        grid-template-columns: 1fr
+      }
+
+      .filter-tabs {
+        gap: 8px
+      }
+
+      .filter-tab {
+        padding: 8px 16px;
+        font-size: 12px
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <div class="logo-container">
-    <img src="logo.jpg" alt="POORNAYU Logo">
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-social">
+        <a href="https://wa.me/919414042187" target="_blank" class="wa"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/bhageshbilala" target="_blank" class="ig"><i
+            class="fab fa-instagram"></i></a>
+        <a href="https://x.com/bhagesh_13" target="_blank" class="tw"><i class="fab fa-x-twitter"></i></a>
+      </div>
+      <div class="top-contact">
+        <a href="tel:+918005561306"><i class="fas fa-phone-alt"></i>+91 80055 61306</a>
+        <a href="mailto:poornayuhub@gmail.com"><i class="fas fa-envelope"></i>poornayuhub@gmail.com</a>
+      </div>
+    </div>
   </div>
 
-  <header>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="services.html">Services</a>
-      <a href="philosophy.html">Philosophy</a>
-      <a href="team.html">Team</a>
-      <a href="testimonials.html">Testimonials</a>
-      <a href="faqs.html">FAQs</a>
-      <a href="why.html">Why Us</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+  <!-- NAV -->
+  <nav class="main-nav" id="main-nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo"><img src="logo.jpg" alt="POORNAYU"></a>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="philosophy.html">Philosophy</a>
+        <a href="news.html">News</a>
+        <a href="testimonials.html">Testimonials</a>
+        <a href="faqs.html">FAQs</a>
+        
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html" class="nav-cta">Contact Us</a>
+      </div>
+      <div class="nav-hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')">
+        <span></span><span></span><span></span></div>
+    </div>
+  </nav>
 
-  <section class="services">
-    <h2>Our Core Services</h2>
-    <div class="service-grid">
-      <div class="service-card">
-        <i class="fas fa-piggy-bank"></i>
-        <h3>Post Office Schemes</h3>
-        <p>Secure, government-backed savings with guaranteed returns.</p>
-      </div>
-      <div class="service-card">
-        <i class="fas fa-heartbeat"></i>
-        <h3>Mediclaim Policies</h3>
-        <p>Protect your health and finances with tailored insurance coverage.</p>
-      </div>
-      <div class="service-card">
-        <i class="fas fa-car"></i>
-        <h3>Vehicle & Life Insurance</h3>
-        <p>Reliable solutions for term life, motor, and health insurance.</p>
-      </div>
-      <div class="service-card">
-        <i class="fas fa-building"></i>
-        <h3>Real Estate Investment</h3>
-        <p>Trusted advice for long-term real estate asset growth.</p>
-      </div>
-      <div class="service-card">
-        <i class="fas fa-newspaper"></i>
-        <h3>Newspaper Ads</h3>
-        <p>Promote your brand with impactful media advertisements.</p>
-      </div>
-      <div class="service-card">
-        <i class="fas fa-chart-line"></i>
-        <h3>Alternative Investments</h3>
-        <p>Diversify through high-potential, non-traditional assets.</p>
+  <!-- HERO -->
+  <section class="svc-hero">
+    <div class="svc-hero-orb svc-hero-orb-1"></div>
+    <div class="svc-hero-orb svc-hero-orb-2"></div>
+    <div class="svc-hero-grid"></div>
+    <div class="container svc-hero-content">
+      <div class="svc-hero-badge" data-aos="fade-up"><span><i class="fas fa-star"
+            style="font-size:10px;margin-right:6px"></i>What We Offer</span></div>
+      <h1 class="section-title" style="font-size:clamp(38px,5vw,68px)" data-aos="fade-up" data-aos-delay="100">Our Core
+        <span>Services</span></h1>
+      <div class="gold-divider" data-aos="fade-up" data-aos-delay="150"></div>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">From government-backed savings to diversified
+        portfolios — click any service below to explore details, features, and an instant returns calculator.</p>
+      <div data-aos="fade-up" data-aos-delay="300" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <a href="contact.html" class="btn btn-gold"><i class="fas fa-calendar-check"></i>Book Free Consultation</a>
+        <a href="tel:+918005561306" class="btn btn-outline"><i class="fas fa-phone-alt"></i>Call Now</a>
       </div>
     </div>
   </section>
 
+  <!-- SERVICES SECTION -->
+  <section class="section-pad bg-pattern">
+    <div class="container">
+      <!-- Filter Tabs -->
+      <div class="filter-tabs" data-aos="fade-up">
+        <button class="filter-tab active" data-filter="all">All Services</button>
+        <button class="filter-tab" data-filter="savings">Savings & Schemes</button>
+        <button class="filter-tab" data-filter="insurance">Insurance</button>
+        <button class="filter-tab" data-filter="investment">Investments</button>
+        <button class="filter-tab" data-filter="media">Media</button>
+      </div>
+
+      <!-- Cards Grid -->
+      <div class="svc-full-grid" id="svcGrid">
+
+        <!-- 01 POST OFFICE -->
+        <div class="svc-card" data-cat="savings" data-aos="fade-up" data-aos-delay="100">
+          <div class="svc-card-header" onclick="toggleCard(this.parentElement)">
+            <div class="svc-card-top">
+              <div class="svc-icon2"><i class="fas fa-piggy-bank"></i></div>
+              <div class="svc-num">01</div>
+            </div>
+            <h3>Post Office Schemes</h3>
+            <p>Government-backed savings with guaranteed returns — zero market risk, maximum security.</p>
+            <button class="expand-btn">Explore Details <i class="fas fa-chevron-down"></i></button>
+          </div>
+          <div class="svc-expanded-body">
+            <div class="svc-expanded-inner">
+              <ul class="svc-features">
+                <li><i class="fas fa-check-circle"></i>Public Provident Fund (PPF) — 7.1% p.a., 15-year lock-in</li>
+                <li><i class="fas fa-check-circle"></i>National Savings Certificates (NSC) — 7.7% p.a.</li>
+                <li><i class="fas fa-check-circle"></i>Senior Citizens Savings Scheme — 8.2% p.a.</li>
+                <li><i class="fas fa-check-circle"></i>Sukanya Samriddhi Yojana — 8.0% p.a.</li>
+                <li><i class="fas fa-check-circle"></i>Kisan Vikas Patra — Doubles in 115 months</li>
+              </ul>
+              <div class="svc-divider"></div>
+              <div class="calc-box">
+                <h4><i class="fas fa-calculator" style="margin-right:6px"></i>PPF Returns Calculator</h4>
+                <div class="calc-row">
+                  <label>Monthly Amount (₹)</label>
+                  <input class="calc-input" type="number" id="ppf-amt" value="5000" min="500" max="150000">
+                </div>
+                <div class="calc-row">
+                  <label>Duration (Years)</label>
+                  <input class="calc-input" type="number" id="ppf-yr" value="15" min="1" max="25">
+                </div>
+                <button class="calc-btn" onclick="calcPPF()">Calculate Returns</button>
+                <div class="calc-result" id="ppf-result">
+                  <div class="res-label">Estimated Maturity Amount</div>
+                  <div class="res-val" id="ppf-val">₹16,27,284</div>
+                </div>
+              </div>
+              <div class="consult-card">
+                <i class="fas fa-user-tie"></i>
+                <span>Get personalised scheme recommendations</span>
+                <a href="contact.html">Book Now →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 MEDICLAIM -->
+        <div class="svc-card" data-cat="insurance" data-aos="fade-up" data-aos-delay="150">
+          <div class="svc-card-header" onclick="toggleCard(this.parentElement)">
+            <div class="svc-card-top">
+              <div class="svc-icon2"><i class="fas fa-heartbeat"></i></div>
+              <div class="svc-num">02</div>
+            </div>
+            <h3>Mediclaim Policies</h3>
+            <p>Comprehensive health insurance protecting your family from unexpected medical costs.</p>
+            <button class="expand-btn">Explore Details <i class="fas fa-chevron-down"></i></button>
+          </div>
+          <div class="svc-expanded-body">
+            <div class="svc-expanded-inner">
+              <ul class="svc-features">
+                <li><i class="fas fa-check-circle"></i>Individual & Family Floater Plans up to ₹1 Cr cover</li>
+                <li><i class="fas fa-check-circle"></i>Critical Illness Cover — 40+ conditions</li>
+                <li><i class="fas fa-check-circle"></i>Top-up & Super Top-up Plans</li>
+                <li><i class="fas fa-check-circle"></i>Senior Citizen Health Plans</li>
+                <li><i class="fas fa-check-circle"></i>Claim Assistance & Cashless Hospital Network</li>
+              </ul>
+              <div class="svc-divider"></div>
+              <div class="calc-box">
+                <h4><i class="fas fa-calculator" style="margin-right:6px"></i>Premium Estimator</h4>
+                <div class="calc-row">
+                  <label>Age (Years)</label>
+                  <input class="calc-input" type="number" id="med-age" value="35" min="18" max="80">
+                </div>
+                <div class="calc-row">
+                  <label>Cover Required (₹ Lakhs)</label>
+                  <input class="calc-input" type="number" id="med-cover" value="10" min="3" max="100">
+                </div>
+                <button class="calc-btn" onclick="calcMedi()">Estimate Premium</button>
+                <div class="calc-result" id="med-result">
+                  <div class="res-label">Estimated Annual Premium</div>
+                  <div class="res-val" id="med-val">₹8,400</div>
+                </div>
+              </div>
+              <div class="consult-card">
+                <i class="fas fa-user-tie"></i>
+                <span>Compare plans from top insurers</span>
+                <a href="contact.html">Get Quotes →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 LIFE & VEHICLE -->
+        <div class="svc-card" data-cat="insurance" data-aos="fade-up" data-aos-delay="200">
+          <div class="svc-card-header" onclick="toggleCard(this.parentElement)">
+            <div class="svc-card-top">
+              <div class="svc-icon2"><i class="fas fa-shield-alt"></i></div>
+              <div class="svc-num">03</div>
+            </div>
+            <h3>Life & Vehicle Insurance</h3>
+            <p>Trusted term life, motor, and personal accident solutions to protect what matters most.</p>
+            <button class="expand-btn">Explore Details <i class="fas fa-chevron-down"></i></button>
+          </div>
+          <div class="svc-expanded-body">
+            <div class="svc-expanded-inner">
+              <ul class="svc-features">
+                <li><i class="fas fa-check-circle"></i>Term Life Insurance — up to ₹2 Cr cover</li>
+                <li><i class="fas fa-check-circle"></i>Endowment & ULIP Plans</li>
+                <li><i class="fas fa-check-circle"></i>Car & Two-Wheeler Insurance — Annual Renewal</li>
+                <li><i class="fas fa-check-circle"></i>Personal Accident Cover</li>
+                <li><i class="fas fa-check-circle"></i>Zero Depreciation & Bumper-to-Bumper options</li>
+              </ul>
+              <div class="svc-divider"></div>
+              <div class="calc-box">
+                <h4><i class="fas fa-calculator" style="margin-right:6px"></i>Term Life Cover Estimator</h4>
+                <div class="calc-row">
+                  <label>Annual Income (₹)</label>
+                  <input class="calc-input" type="number" id="life-income" value="600000" step="50000">
+                </div>
+                <div class="calc-row">
+                  <label>Policy Term (Years)</label>
+                  <input class="calc-input" type="number" id="life-term" value="20" min="10" max="40">
+                </div>
+                <button class="calc-btn" onclick="calcLife()">Estimate Cover Needed</button>
+                <div class="calc-result" id="life-result">
+                  <div class="res-label">Recommended Life Cover</div>
+                  <div class="res-val" id="life-val">₹1.20 Cr</div>
+                </div>
+              </div>
+              <div class="consult-card">
+                <i class="fas fa-user-tie"></i>
+                <span>Get the right cover for your family</span>
+                <a href="contact.html">Consult Now →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 REAL ESTATE -->
+        <div class="svc-card" data-cat="investment" data-aos="fade-up" data-aos-delay="100">
+          <div class="svc-card-header" onclick="toggleCard(this.parentElement)">
+            <div class="svc-card-top">
+              <div class="svc-icon2"><i class="fas fa-building"></i></div>
+              <div class="svc-num">04</div>
+            </div>
+            <h3>Real Estate Investment</h3>
+            <p>Expert guidance on high-yield real estate in Rajasthan — residential to commercial.</p>
+            <button class="expand-btn">Explore Details <i class="fas fa-chevron-down"></i></button>
+          </div>
+          <div class="svc-expanded-body">
+            <div class="svc-expanded-inner">
+              <ul class="svc-features">
+                <li><i class="fas fa-check-circle"></i>Residential Property Advisory — Jaipur & NCR</li>
+                <li><i class="fas fa-check-circle"></i>Commercial Asset Investment Consulting</li>
+                <li><i class="fas fa-check-circle"></i>Land Acquisition & Legal Due Diligence</li>
+                <li><i class="fas fa-check-circle"></i>Portfolio Diversification Strategy</li>
+                <li><i class="fas fa-check-circle"></i>ROI & Rental Yield Planning</li>
+              </ul>
+              <div class="svc-divider"></div>
+              <div class="calc-box">
+                <h4><i class="fas fa-calculator" style="margin-right:6px"></i>Property ROI Calculator</h4>
+                <div class="calc-row">
+                  <label>Property Value (₹)</label>
+                  <input class="calc-input" type="number" id="re-val" value="5000000" step="100000">
+                </div>
+                <div class="calc-row">
+                  <label>Annual Growth Rate (%)</label>
+                  <input class="calc-input" type="number" id="re-rate" value="12" min="1" max="30">
+                </div>
+                <div class="calc-row">
+                  <label>Hold Period (Years)</label>
+                  <input class="calc-input" type="number" id="re-yr" value="5" min="1" max="20">
+                </div>
+                <button class="calc-btn" onclick="calcRE()">Calculate Future Value</button>
+                <div class="calc-result" id="re-result">
+                  <div class="res-label">Estimated Future Value</div>
+                  <div class="res-val" id="re-res-val">₹88.1 L</div>
+                </div>
+              </div>
+              <div class="consult-card">
+                <i class="fas fa-user-tie"></i>
+                <span>Handpicked property opportunities await</span>
+                <a href="contact.html">Talk to Expert →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 ALTERNATIVE INVESTMENTS -->
+        <div class="svc-card" data-cat="investment" data-aos="fade-up" data-aos-delay="150">
+          <div class="svc-card-header" onclick="toggleCard(this.parentElement)">
+            <div class="svc-card-top">
+              <div class="svc-icon2"><i class="fas fa-chart-line"></i></div>
+              <div class="svc-num">05</div>
+            </div>
+            <h3>Alternative Investments</h3>
+            <p>Diversify beyond traditional markets with high-potential, non-conventional strategies.</p>
+            <button class="expand-btn">Explore Details <i class="fas fa-chevron-down"></i></button>
+          </div>
+          <div class="svc-expanded-body">
+            <div class="svc-expanded-inner">
+              <ul class="svc-features">
+                <li><i class="fas fa-check-circle"></i>Chit Funds & High-Yield Bonds</li>
+                <li><i class="fas fa-check-circle"></i>Gold & Commodity Advisory</li>
+                <li><i class="fas fa-check-circle"></i>NCD & Debenture Investments</li>
+                <li><i class="fas fa-check-circle"></i>Franchise & Business Opportunities</li>
+                <li><i class="fas fa-check-circle"></i>Risk Assessment & Investor Profiling</li>
+              </ul>
+              <div class="svc-divider"></div>
+              <div class="calc-box">
+                <h4><i class="fas fa-calculator" style="margin-right:6px"></i>Wealth Growth Simulator</h4>
+                <div class="calc-row">
+                  <label>Lump Sum (₹)</label>
+                  <input class="calc-input" type="number" id="alt-amt" value="200000" step="10000">
+                </div>
+                <div class="calc-row">
+                  <label>Expected Return (%)</label>
+                  <input class="calc-input" type="number" id="alt-rate" value="14" min="1" max="40">
+                </div>
+                <div class="calc-row">
+                  <label>Duration (Years)</label>
+                  <input class="calc-input" type="number" id="alt-yr" value="5" min="1" max="20">
+                </div>
+                <button class="calc-btn" onclick="calcAlt()">Project Growth</button>
+                <div class="calc-result" id="alt-result">
+                  <div class="res-label">Projected Portfolio Value</div>
+                  <div class="res-val" id="alt-res-val">₹3.86 L</div>
+                </div>
+              </div>
+              <div class="consult-card">
+                <i class="fas fa-user-tie"></i>
+                <span>Curated alternative deals for serious investors</span>
+                <a href="contact.html">Explore Deals →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 06 MEDIA -->
+        <div class="svc-card" data-cat="media" data-aos="fade-up" data-aos-delay="200">
+          <div class="svc-card-header" onclick="toggleCard(this.parentElement)">
+            <div class="svc-card-top">
+              <div class="svc-icon2"><i class="fas fa-newspaper"></i></div>
+              <div class="svc-num">06</div>
+            </div>
+            <h3>Media & Advertisement</h3>
+            <p>Strategically place your brand across print and digital media to reach Rajasthan.</p>
+            <button class="expand-btn">Explore Details <i class="fas fa-chevron-down"></i></button>
+          </div>
+          <div class="svc-expanded-body">
+            <div class="svc-expanded-inner">
+              <ul class="svc-features">
+                <li><i class="fas fa-check-circle"></i>Newspaper & Print Ads — Regional & National</li>
+                <li><i class="fas fa-check-circle"></i>Digital Marketing Campaigns</li>
+                <li><i class="fas fa-check-circle"></i>Hoarding & Outdoor Advertising</li>
+                <li><i class="fas fa-check-circle"></i>Brand Strategy & Identity Consulting</li>
+                <li><i class="fas fa-check-circle"></i>Event Promotions & Sponsorships</li>
+              </ul>
+              <div class="svc-divider"></div>
+              <div class="consult-card" style="margin-top:0">
+                <i class="fas fa-bullhorn"></i>
+                <span>Get a tailored media plan for your brand</span>
+                <a href="contact.html">Request Plan →</a>
+              </div>
+              <div class="consult-card" style="margin-top:10px">
+                <i class="fas fa-phone-alt"></i>
+                <span>Talk to our advertising specialist today</span>
+                <a href="tel:+918005561306">Call Now →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /svcGrid -->
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="section-pad" style="background:var(--navy-2)">
+    <div class="container">
+      <div class="text-center" data-aos="fade-up">
+        <div class="section-tag">Quick Compare</div>
+        <h2 class="section-title">Savings Scheme <span>Comparison</span></h2>
+        <div class="gold-divider"></div>
+      </div>
+      <div style="overflow-x:auto" data-aos="fade-up" data-aos-delay="100">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Scheme</th>
+              <th>Rate p.a.</th>
+              <th>Lock-in</th>
+              <th>Tax Benefit</th>
+              <th>Risk</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>PPF</td>
+              <td>7.1%</td>
+              <td>15 Years</td>
+              <td>EEE — Full</td>
+              <td><span class="badge-good">Zero</span></td>
+            </tr>
+            <tr>
+              <td>SSY (Sukanya)</td>
+              <td>8.0%</td>
+              <td>21 Years</td>
+              <td>EEE — Full</td>
+              <td><span class="badge-good">Zero</span></td>
+            </tr>
+            <tr>
+              <td>SCSS (Senior Citizens)</td>
+              <td>8.2%</td>
+              <td>5 Years</td>
+              <td>Sec 80C</td>
+              <td><span class="badge-good">Zero</span></td>
+            </tr>
+            <tr>
+              <td>NSC</td>
+              <td>7.7%</td>
+              <td>5 Years</td>
+              <td>Sec 80C</td>
+              <td><span class="badge-good">Zero</span></td>
+            </tr>
+            <tr>
+              <td>KVP (Doubles)</td>
+              <td>~7.5%</td>
+              <td>~9.6 Years</td>
+              <td>None</td>
+              <td><span class="badge-good">Zero</span></td>
+            </tr>
+            <tr>
+              <td>Real Estate</td>
+              <td>10–15%</td>
+              <td>Flexible</td>
+              <td>Capital Gains</td>
+              <td><span class="badge-med">Low–Med</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS TIMELINE -->
+  <section class="section-pad process-section">
+    <div class="container text-center">
+      <div class="section-tag" data-aos="fade-up">How It Works</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Our Simple <span>4-Step Process</span></h2>
+      <div class="gold-divider" data-aos="fade-up" data-aos-delay="150"></div>
+      <div class="timeline">
+        <div class="tl-item" data-aos="fade-right">
+          <div class="tl-node">1</div>
+          <div class="tl-content" style="margin-left:calc(50% + 32px)">
+            <div class="tl-tag">Step One</div>
+            <h4>Free Consultation</h4>
+            <p>Discuss your goals with our expert advisors — no charge, no obligation. We listen first.</p>
+          </div>
+        </div>
+        <div class="tl-item" data-aos="fade-left">
+          <div class="tl-node">2</div>
+          <div class="tl-content" style="margin-right:calc(50% + 32px)">
+            <div class="tl-tag">Step Two</div>
+            <h4>Custom Strategy</h4>
+            <p>We craft a personalised investment plan aligned with your income, goals & risk profile.</p>
+          </div>
+        </div>
+        <div class="tl-item" data-aos="fade-right">
+          <div class="tl-node">3</div>
+          <div class="tl-content" style="margin-left:calc(50% + 32px)">
+            <div class="tl-tag">Step Three</div>
+            <h4>Implementation</h4>
+            <p>We handle all paperwork, documentation & applications — completely hassle-free for you.</p>
+          </div>
+        </div>
+        <div class="tl-item" data-aos="fade-left">
+          <div class="tl-node">4</div>
+          <div class="tl-content" style="margin-right:calc(50% + 32px)">
+            <div class="tl-tag">Step Four</div>
+            <h4>Ongoing Support</h4>
+            <p>Regular reviews, renewals & continuous guidance to keep you on track — always by your side.</p>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:54px" data-aos="fade-up">
+        <a href="contact.html" class="btn btn-gold"><i class="fas fa-calendar-check"></i>Start Your Journey Today</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    &copy; 2025 POORNAYU: An Investment Hub. All rights reserved.
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="logo.jpg" alt="POORNAYU Logo">
+          <p>Jaipur's most trusted investment consulting hub. Empowering financial growth through expert guidance and
+            personalised solutions since 2010.</p>
+          <div class="footer-social">
+            <a href="https://wa.me/919414042187" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/bhageshbilala" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://x.com/bhagesh_13" target="_blank"><i class="fab fa-x-twitter"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="philosophy.html">Philosophy</a>
+          <a href="team.html">Our Team</a>
+          <a href="gallery.html">Gallery</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="services.html#savings">Post Office Schemes</a>
+          <a href="services.html#insurance">Mediclaim Policies</a>
+          <a href="services.html#insurance">Life Insurance</a>
+          <a href="services.html#investment">Real Estate</a>
+          <a href="services.html#investment">Alternative Investments</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <a href="tel:8005561306"><i class="fas fa-phone-alt" style="margin-right:8px;color:var(--gold)"></i>80055
+            61306</a>
+          <a href="https://wa.me/919414042187"><i class="fab fa-whatsapp"
+              style="margin-right:8px;color:var(--gold)"></i>9414042187</a>
+          <a href="mailto:poornayuhub@gmail.com"><i class="fas fa-envelope"
+              style="margin-right:8px;color:var(--gold)"></i>poornayuhub@gmail.com</a>
+          <a href="#"><i class="fas fa-map-marker-alt" style="margin-right:8px;color:var(--gold)"></i>Sanganer, Jaipur,
+            RJ</a>
+        </div>
+      </div>
+      <div class="footer-bottom">&copy; 2025 <span>POORNAYU: An Investment Hub</span>. All rights reserved.</div>
+    </div>
   </footer>
 
+  <a href="https://wa.me/919414042187" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 900, once: true, offset: 80 });
+
+    /* Nav scroll */
+    window.addEventListener('scroll', function () {
+      document.getElementById('main-nav').classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    /* Card expand/collapse */
+    function toggleCard(card) {
+      var wasOpen = card.classList.contains('expanded');
+      document.querySelectorAll('.svc-card.expanded').forEach(function (c) { c.classList.remove('expanded'); });
+      if (!wasOpen) card.classList.add('expanded');
+    }
+
+    /* Filter tabs */
+    document.querySelectorAll('.filter-tab').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.filter-tab').forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        var f = btn.dataset.filter;
+        document.querySelectorAll('.svc-card').forEach(function (c) {
+          if (f === 'all' || c.dataset.cat === f) {
+            c.classList.remove('hidden');
+            c.style.animation = 'fadeInUp .4s ease forwards';
+          } else {
+            c.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    /* Calculators */
+    function fmt(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }
+    function fmtL(n) {
+      if (n >= 10000000) return '₹' + (n / 10000000).toFixed(2) + ' Cr';
+      if (n >= 100000) return '₹' + (n / 100000).toFixed(1) + ' L';
+      return fmt(n);
+    }
+
+    function calcPPF() {
+      var m = +document.getElementById('ppf-amt').value || 5000;
+      var y = +document.getElementById('ppf-yr').value || 15;
+      var r = 0.071 / 12;
+      var n = y * 12;
+      var v = m * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
+      document.getElementById('ppf-val').textContent = fmtL(v);
+    }
+
+    function calcMedi() {
+      var age = +document.getElementById('med-age').value || 35;
+      var cover = +document.getElementById('med-cover').value || 10;
+      var base = 3000;
+      var ageFactor = age < 30 ? 0.8 : age < 45 ? 1 : age < 60 ? 1.6 : 2.4;
+      var coverFactor = cover / 5;
+      var premium = base * ageFactor * coverFactor;
+      document.getElementById('med-val').textContent = fmt(Math.round(premium / 100) * 100) + '/yr';
+    }
+
+    function calcLife() {
+      var income = +document.getElementById('life-income').value || 600000;
+      var term = +document.getElementById('life-term').value || 20;
+      var cover = income * term * 0.75;
+      document.getElementById('life-val').textContent = fmtL(cover);
+    }
+
+    function calcRE() {
+      var val = +document.getElementById('re-val').value || 5000000;
+      var rate = (+document.getElementById('re-rate').value || 12) / 100;
+      var yr = +document.getElementById('re-yr').value || 5;
+      var fv = val * Math.pow(1 + rate, yr);
+      document.getElementById('re-res-val').textContent = fmtL(fv);
+    }
+
+    function calcAlt() {
+      var amt = +document.getElementById('alt-amt').value || 200000;
+      var rate = (+document.getElementById('alt-rate').value || 14) / 100;
+      var yr = +document.getElementById('alt-yr').value || 5;
+      var fv = amt * Math.pow(1 + rate, yr);
+      document.getElementById('alt-res-val').textContent = fmtL(fv);
+    }
+
+    /* Run defaults */
+    calcPPF(); calcMedi(); calcLife(); calcRE(); calcAlt();
+
+    /* FAQ */
+    function toggleFaq(el) {
+      var item = el.parentElement;
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function (i) { i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    }
+
+    /* Live recalc on input */
+    ['ppf-amt', 'ppf-yr'].forEach(function (id) { document.getElementById(id).addEventListener('input', calcPPF); });
+    ['med-age', 'med-cover'].forEach(function (id) { document.getElementById(id).addEventListener('input', calcMedi); });
+    ['life-income', 'life-term'].forEach(function (id) { document.getElementById(id).addEventListener('input', calcLife); });
+    ['re-val', 're-rate', 're-yr'].forEach(function (id) { document.getElementById(id).addEventListener('input', calcRE); });
+    ['alt-amt', 'alt-rate', 'alt-yr'].forEach(function (id) { document.getElementById(id).addEventListener('input', calcAlt); });
+  </script>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="mobile-sticky-cta">
+    <a href="tel:+918005561306" class="cta-call"><i class="fas fa-phone-alt"></i>Call Now</a>
+    <a href="https://wa.me/919414042187" class="cta-wa" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+  </div>
+
+  <script>
+    // Back to top
+    var btt = document.getElementById('backToTop');
+    if(btt){
+      window.addEventListener('scroll', function(){
+        btt.classList.toggle('visible', window.scrollY > 300);
+      });
+      btt.addEventListener('click', function(){
+        window.scrollTo({top:0, behavior:'smooth'});
+      });
+    }
+    // Hamburger X toggle
+    var ham = document.querySelector('.nav-hamburger');
+    var navLinks = document.getElementById('nav-links');
+    if(ham && navLinks){
+      ham.addEventListener('click', function(){
+        ham.classList.toggle('open');
+      });
+    }
+  </script>
 </body>
+
 </html>
